@@ -1,5 +1,6 @@
 #include "gae_graphics_sdl2.h"
 #include "gae_rect.h"
+#include "gae_buffer.h"
 
 
 gae_graphics_window_t* gae_graphics_window_init(gae_graphics_window_t* window, const char* const name, int x, int y, int w, int h, unsigned int flags)
@@ -97,6 +98,46 @@ gae_graphics_texture_t* gae_graphics_texture_init(gae_graphics_texture_t* textur
 	texture->data = 0;
 	texture->w = 0;
 	texture->h = 0;
+	
+	return texture;
+}
+
+static gae_graphics_texture_t* gae_graphics_texture_from_surface(gae_graphics_texture_t* texture, SDL_Renderer* renderer, SDL_Surface* surface)
+{
+	Uint32 format;
+	int access;
+	
+	gae_graphics_texture_init(texture);
+	
+	texture->data = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_QueryTexture(texture->data, &format, &access, (int*)&texture->w, (int*)&texture->h);
+	
+	return texture;
+}
+
+gae_graphics_texture_t* gae_graphics_texture_fill_from_buffer(gae_graphics_texture_t* texture, gae_graphics_context_t* const context, struct gae_buffer_s* const buffer, int width, int height, int depth)
+{
+	int pitch = (24 == depth) ? 3 * width : 4 * height;
+	Uint32 rmask, gmask, bmask, amask;
+	SDL_Surface* surf;
+	
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+	rmask = 0xff000000;
+	gmask = 0x00ff0000;
+	bmask = 0x0000ff00;
+	amask = 0x000000ff;
+#else
+	rmask = 0x000000ff;
+	gmask = 0x0000ff00;
+	bmask = 0x00ff0000;
+	amask = 0xff000000;
+#endif
+	
+	surf = SDL_CreateRGBSurfaceFrom((void*)buffer->data, width, height, depth, pitch, rmask, gmask, bmask, amask);
+	
+	gae_graphics_texture_from_surface(texture, context->data, surf);
+	
+	SDL_FreeSurface(surf);
 	
 	return texture;
 }

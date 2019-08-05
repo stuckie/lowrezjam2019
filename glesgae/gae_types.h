@@ -15,15 +15,4 @@
 
 typedef unsigned char gae_byte;
 
-typedef union gae_colour_rgba_s {
-	gae_byte r, g, b, a;
-	unsigned int value;
-} gae_colour_rgba;
-
-typedef struct gae_colour_hsv_s {
-	float h; /* 0 - 360 */
-	float s; /* 0 - 100 */
-	float v; /* 0 - 100 */
-} gae_colour_hsv;
-
 #endif

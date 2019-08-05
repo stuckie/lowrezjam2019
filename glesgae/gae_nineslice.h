@@ -1,7 +1,8 @@
 #ifndef _GAE_NINESLICE_H_
 #define _GAE_NINESLICE_H_
 
-#include "gae.h"
+#include "gae_sprite.h"
+#include "gae_rect.h"
 
 enum gae_nineslice_frame
 {	gae_nineslice_top_left = 0

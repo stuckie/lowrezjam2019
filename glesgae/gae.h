@@ -9,6 +9,7 @@
 
 /* Data structures */
 #include "gae_array.h"
+#include "gae_buffer.h"
 #include "gae_dlist.h"
 #include "gae_grid.h"
 #include "gae_map.h"
@@ -23,9 +24,13 @@
 #include "gae_state.h"
 
 /* Graphics constructs */
-#include "gae_rect.h"
-#include "gae_sprite.h"
-#include "gae_nineslice.h"
+#include "gae_colour.h"
 #include "gae_font.h"
+#include "gae_nineslice.h"
+#include "gae_sprite.h"
+
+/* Maths */
+#include "gae_point.h"
+#include "gae_rect.h"
 
 #endif

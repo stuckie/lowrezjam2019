@@ -1,0 +1,44 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+    canvas.emscripten {
+        border: none;
+        position: absolute;
+        left:0;
+        top:0;
+        display:block
+    }
+
+    #loadingDiv {
+        text-align: center;
+    }
+</style>
+    </head>
+
+    <body>
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+      <div id="loadingDiv">Loading...</div>
+    <script type='text/javascript'>
+        var Module = {
+            onRuntimeInitialized: function() {
+                var e = document.getElementById('loadingDiv');
+                e.style.visibility = 'hidden';
+            }, 
+            canvas: (function() {
+                var canvas = document.getElementById('canvas');
+                return canvas;
+                })()
+        };
+
+    </script>
+    <script>
+          var script = document.createElement('script');
+          script.src = "fishy.js";
+          document.body.appendChild(script);
+	</script>
+
+    </body>
+</html>
+

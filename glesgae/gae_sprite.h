@@ -2,6 +2,7 @@
 #define _GAE_SPRITE_H_
 
 #include "gae.h"
+#include "gae_rect.h"
 
 typedef struct gae_frame_s {
 	gae_graphics_texture_t* texture;

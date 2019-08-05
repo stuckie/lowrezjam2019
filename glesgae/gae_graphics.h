@@ -2,7 +2,6 @@
 #define _GAE_GRAPHICS_H_
 
 #include "gae_types.h"
-#include "gae_rect.h"
 
 typedef struct gae_graphics_window_s {
 	void* data;
@@ -27,6 +26,7 @@ enum gae_graphics_window_flags
 };
 
 struct gae_rect_s;
+struct gae_buffer_s;
 
 /* Initialise a new window with the given name at the specified position, with the given width and height, and flags */
 gae_graphics_window_t* gae_graphics_window_init(gae_graphics_window_t* window, const char* const name, int x, int y, int w, int h, unsigned int flags);
@@ -47,7 +47,7 @@ gae_graphics_context_t* gae_graphics_context_present(gae_graphics_context_t* con
 gae_graphics_context_t* gae_graphics_context_texture_load_from_file(gae_graphics_context_t* const context, const char* const filepath, gae_graphics_texture_t* texture);
 
 /* Blit the given texture to the context using the specified source and destination rects */
-gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t* const context, gae_graphics_texture_t* const texture, gae_rect_t* const src, gae_rect_t* const dest);
+gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t* const context, gae_graphics_texture_t* const texture, struct gae_rect_s* const src, struct gae_rect_s* const dest);
 
 /* Modulate texture colour */
 gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, gae_byte r, gae_byte g, gae_byte b);
@@ -60,6 +60,9 @@ gae_graphics_context_t* gae_graphics_context_destroy(gae_graphics_context_t* con
 
 /* Initialise a new texture object */
 gae_graphics_texture_t* gae_graphics_texture_init(gae_graphics_texture_t* texture);
+
+/* Fill texture with the given buffer */
+gae_graphics_texture_t* gae_graphics_texture_fill_from_buffer(gae_graphics_texture_t* texture, gae_graphics_context_t* const context, struct gae_buffer_s* const buffer, int width, int height, int depth);
 
 /* Destroy the given texture */
 gae_graphics_texture_t* gae_graphics_texture_destroy(gae_graphics_texture_t* texture);
