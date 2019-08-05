@@ -9,6 +9,7 @@ typedef struct fish_def_s {
 } fish_def_t;
 
 typedef struct fish_s {
+	char name[16]; 
 	int depth;
 	int weight;
 	int bait;

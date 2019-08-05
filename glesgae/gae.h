@@ -19,6 +19,8 @@
 /* Sub Systems */
 #include "gae_events.h"
 #include "gae_graphics.h"
+#include "gae_timer.h"
+#include "gae_clock.h"
 
 /* State constructs */
 #include "gae_state.h"
