@@ -12,6 +12,6 @@ gae_clock_t* gae_clock_reset(gae_clock_t* clock);
 gae_clock_t* gae_clock_update(gae_clock_t* clock);
 gae_clock_t* gae_clock_pause(gae_clock_t* clock);
 gae_clock_t* gae_clock_resume(gae_clock_t* clock);
-gae_clock_t* gea_clock_destroy(gae_clock_t* clock);
+gae_clock_t* gae_clock_destroy(gae_clock_t* clock);
 
 #endif

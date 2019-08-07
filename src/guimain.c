@@ -1,9 +1,18 @@
 #include "gae.h"
 
+#include "fishy_splash.h"
 #include "fishy_area.h"
 
 #include <stdio.h>
 #include <stdlib.h>
+
+typedef struct fish_global_s {
+	gae_timer_t frameCap;
+	float fps;
+	float ticksPerFrame;
+} fish_global_t;
+
+fish_global_t GLOBAL;
 
 #if defined(__EMSCRIPTEN__)
 #include <emscripten.h>
@@ -21,7 +30,6 @@ void emscripten_fullscreen()
 static void main_loop();
 static int isRunning = 1;
 
-static gae_graphics_texture_t badger;
 static gae_graphics_texture_t waterTex;
 static gae_rect_t drawRect;
 
@@ -77,12 +85,18 @@ static void OnMouseEvent(void* userDatum, gae_event_t* event)
 	}
 }
 
+gae_state_t splash;
 gae_sprite_sheet_t sprites;
 gae_rect_t boatRect;
 int main(int argc, char** argv)
 {
 	water_area_t waterArea;
 	gae_json_document_t jsDoc;
+	
+	gae_system.main_clock = gae_clock_init(gae_alloc(sizeof(gae_clock_t)));
+	gae_timer_init(&GLOBAL.frameCap, gae_system.main_clock);
+    GLOBAL.fps = 1.0F / 60.0F;
+    GLOBAL.ticksPerFrame = GLOBAL.fps * 1000.0F;
 	
 	gae_system.event_system = gae_event_system_init(gae_alloc(sizeof(gae_event_system_t)), 0);
 	gae_system.event_system->onMouseEvent = OnMouseEvent;
@@ -94,8 +108,6 @@ int main(int argc, char** argv)
 	
 	gae_system.event_system->onQuit = OnQuit;
 	
-	gae_graphics_texture_init(&badger);
-	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/badger.bmp", &badger);
 	drawRect.x = 0; drawRect.y = 0; drawRect.w = 64; drawRect.h = 64;
 	boatRect.x = 16, boatRect.y = 16;
 	
@@ -109,15 +121,21 @@ int main(int argc, char** argv)
 	gae_sprite_sheet_init(&sprites, &jsDoc);
 	gae_json_document_destroy(&jsDoc);
 	
+	fishy_splash_init(&splash);
+	
 	(void)(argc);
 	(void)(argv);
+	
+	(*splash.onStart)(splash.userData);
 	
 #if !defined(__EMSCRIPTEN__)
 	while (isRunning)
 		main_loop();
 	
+	(*splash.onStop)(splash.userData);
+	fishy_splash_destroy(&splash);
+	
 	gae_sprite_sheet_destroy(&sprites);
-	gae_graphics_texture_destroy(&badger);
 	gae_graphics_texture_destroy(&waterTex);
 	gae_graphics_window_destroy(gae_system.graphics.window);
 	gae_graphics_context_destroy(gae_system.graphics.context);
@@ -126,6 +144,7 @@ int main(int argc, char** argv)
 	gae_free(gae_system.event_system);
 	gae_free(gae_system.graphics.window);
 	gae_free(gae_system.graphics.context);
+	gae_free(gae_system.main_clock);
 	
 #else
 	emscripten_set_main_loop(main_loop, 0, 1);
@@ -137,12 +156,20 @@ int main(int argc, char** argv)
 /* main loop separated for Emscripten to work */
 static void main_loop()
 {
+	gae_timer_update(&GLOBAL.frameCap, gae_system.main_clock);
+	gae_timer_reset(&GLOBAL.frameCap);
+	
+	gae_clock_update(gae_system.main_clock);
+	
 	gae_event_system_update(gae_system.event_system);
 	
 	gae_graphics_context_clear(gae_system.graphics.context);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &waterTex, &drawRect, &drawRect);
-	gae_graphics_context_blit_texture(gae_system.graphics.context, &badger, &drawRect, &drawRect);
-	gae_sprite_sheet_draw(&sprites, gae_hashstring_calculate("boat"), &boatRect);
+	(*splash.onUpdate)(splash.userData);
 	
 	gae_graphics_context_present(gae_system.graphics.context);
+	
+	gae_timer_update(&GLOBAL.frameCap, gae_system.main_clock);
+	
+	gae_system_delay(GLOBAL.ticksPerFrame - GLOBAL.frameCap.currentTime);
 }

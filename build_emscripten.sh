@@ -1,3 +1,4 @@
+#!/bin/bash
 rm fishy.bc
 emmake make -f Makefile
 mv fishy fishy.bc

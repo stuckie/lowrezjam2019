@@ -4,6 +4,7 @@
 struct gae_event_system_s;
 struct gae_graphics_context_s;
 struct gae_graphics_window_s;
+struct gae_clock_s;
 
 typedef struct gae_graphics_s {
 	struct gae_graphics_window_s* window;
@@ -13,8 +14,11 @@ typedef struct gae_graphics_s {
 typedef struct gae_system_s {
 	gae_graphics_t graphics;
 	struct gae_event_system_s* event_system;
+	struct gae_clock_s* main_clock;
 } gae_system_t;
 
 gae_system_t gae_system;
+
+void gae_system_delay(unsigned int ms);
 
 #endif

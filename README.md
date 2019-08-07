@@ -92,7 +92,7 @@ And of course, most of glesgae does not exist!
 [x] Day 6 - Tuesday
 	Spritesheet implementation
 [ ] Day 7 - Wednesday
-	
+	States
 [ ] Day 8 - Thursday
 [ ] Day 9 - Friday
 [ ] Day 10 - Saturday
