@@ -13,6 +13,22 @@ typedef struct fishy_splash_state_s {
 	gae_rect_t drawRect;
 } fishy_splash_state_t;
 
+static void deleteSplash(gae_list_node_t* node)
+{
+	fishy_splash_t* data = node->data;
+	
+	gae_graphics_texture_destroy(&data->texture);
+	gae_timer_destroy(&data->timer);
+}
+
+
+static void fishy_splash_destroy(fishy_splash_state_t* data)
+{
+	gae_list_foreach(&data->splashScreens, deleteSplash);
+	gae_list_destroy(&data->splashScreens);
+	gae_free(data);
+}
+
 static void resetTime(gae_list_node_t* node)
 {
 	fishy_splash_t* data = node->data;
@@ -48,7 +64,8 @@ static int onUpdate(void* userData)
 
 static int onStop(void* userData)
 {
-	(void)(userData);
+	fishy_splash_state_t* data = userData;
+	fishy_splash_destroy(data);
 	
 	return 0;
 }
@@ -84,24 +101,6 @@ gae_state_t* fishy_splash_init(gae_state_t* state)
 	state->onStart = onStart;
 	state->onUpdate = onUpdate;
 	state->onStop = onStop;
-	
-	return state;
-}
-
-static void deleteSplash(gae_list_node_t* node)
-{
-	fishy_splash_t* data = node->data;
-	
-	gae_graphics_texture_destroy(&data->texture);
-	gae_timer_destroy(&data->timer);
-}
-
-gae_state_t* fishy_splash_destroy(gae_state_t* state)
-{
-	fishy_splash_state_t* data = state->userData;
-	gae_list_foreach(&data->splashScreens, deleteSplash);
-	gae_list_destroy(&data->splashScreens);
-	gae_free(state->userData);
 	
 	return state;
 }

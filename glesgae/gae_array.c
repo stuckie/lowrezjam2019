@@ -114,7 +114,8 @@ void* gae_array_last(gae_array_t* array)
 {
 	const unsigned int pos = array->used - array->size;
 	
-	if (array->allocated < array->used - array->size) return 0;
+	if ((0 == array->used)
+	|| (array->allocated < array->used - array->size)) return 0;
 	else return array->data + pos;
 }
 

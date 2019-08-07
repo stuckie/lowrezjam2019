@@ -17,6 +17,7 @@
 #include "gae_list.h"
 #include "gae_js.h"
 #include "gae_sprite_sheet.h"
+#include "gae_stack.h"
 
 /* Sub Systems */
 #include "gae_events.h"

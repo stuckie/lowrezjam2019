@@ -4,6 +4,5 @@
 struct gae_state_s;
 
 struct gae_state_s* fishy_splash_init(struct gae_state_s* state);
-struct gae_state_s* fishy_splash_destroy(struct gae_state_s* state);
 
 #endif

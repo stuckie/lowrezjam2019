@@ -1,3 +1,6 @@
+#ifndef _FISHY_AREA_H_
+#define _FISHY_AREA_H_
+
 #include "gae.h"
 
 typedef struct water_cell_s {
@@ -17,3 +20,5 @@ water_area_t* water_area_print(water_area_t* area);
 
 /* Clean up the given water area */
 water_area_t* water_area_destroy(water_area_t* area);
+
+#endif
