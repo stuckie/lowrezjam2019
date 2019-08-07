@@ -74,6 +74,8 @@ static void water_depth_create(gae_grid_t* grid, int holes)
     for (i = 0; i < holes; ++i) {
 		water_hole_fill(grid, positions[i], 1);
 	}
+	
+	gae_free(positions);
 }
 
 water_area_t* water_area_init(water_area_t* area, unsigned int width, unsigned int height, gae_list_t* fish)

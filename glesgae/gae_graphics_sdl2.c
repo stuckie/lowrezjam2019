@@ -68,7 +68,7 @@ gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t
 {
 	SDL_RenderCopy(context->data, texture->data, (SDL_Rect*)src, (SDL_Rect*)dest);
     
-    return context;
+	return context;
 }
 
 gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, gae_byte r, gae_byte g, gae_byte b)

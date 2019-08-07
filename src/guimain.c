@@ -59,6 +59,8 @@ void fillWaterTexture(water_area_t* area)
 	}
 	
 	gae_graphics_texture_fill_from_buffer(&waterTex, gae_system.graphics.context, &texBuffer, area->area.columns, area->area.rows, 24);
+	
+	gae_buffer_destroy(&texBuffer);
 }
 
 static void OnMouseEvent(void* userDatum, gae_event_t* event)
@@ -105,6 +107,7 @@ int main(int argc, char** argv)
 	gae_json_document_init(&jsDoc, "data/sprites.json");
 	gae_json_document_parse(&jsDoc);
 	gae_sprite_sheet_init(&sprites, &jsDoc);
+	gae_json_document_destroy(&jsDoc);
 	
 	(void)(argc);
 	(void)(argv);
@@ -113,12 +116,16 @@ int main(int argc, char** argv)
 	while (isRunning)
 		main_loop();
 	
-	gae_json_document_destroy(&jsDoc);
 	gae_sprite_sheet_destroy(&sprites);
 	gae_graphics_texture_destroy(&badger);
+	gae_graphics_texture_destroy(&waterTex);
 	gae_graphics_window_destroy(gae_system.graphics.window);
 	gae_graphics_context_destroy(gae_system.graphics.context);
 	gae_event_system_destroy(gae_system.event_system);
+	
+	gae_free(gae_system.event_system);
+	gae_free(gae_system.graphics.window);
+	gae_free(gae_system.graphics.context);
 	
 #else
 	emscripten_set_main_loop(main_loop, 0, 1);
@@ -138,5 +145,4 @@ static void main_loop()
 	gae_sprite_sheet_draw(&sprites, gae_hashstring_calculate("boat"), &boatRect);
 	
 	gae_graphics_context_present(gae_system.graphics.context);
-	
 }
