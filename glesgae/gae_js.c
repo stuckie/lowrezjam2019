@@ -9,6 +9,7 @@
 #define JSON_TAG_LF 10
 #define JSON_TAG_CR 13
 #define JSON_TAG_SPACE 32
+#define JSON_TAG_TAB 9
 #define JSON_TAG_QUOTE 34
 #define JSON_TAG_OBJECT_START 123 /* { */
 #define JSON_TAG_OBJECT_END 125 /* } */
@@ -70,6 +71,7 @@ static void string_set(gae_json_string_t* string, gae_json_string_type type, gae
 		&&	JSON_TAG_CR != c
 		&&	JSON_TAG_LF != c
 		&&	JSON_TAG_SPACE != c
+		&&	JSON_TAG_TAB != c
 		))
 		&& buffer->pos < buffer->length) {
 		c = buffer->data[++buffer->pos];
@@ -102,7 +104,7 @@ static void add_child(gae_json_node_t* parent, gae_json_node_t* child)
 	}
 }
 
-gae_json_document_t* gae_json_document_create(gae_json_document_t* doc, const char* path)
+gae_json_document_t* gae_json_document_init(gae_json_document_t* doc, const char* path)
 {
 	gae_file_t file;
 	

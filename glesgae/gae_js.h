@@ -4,7 +4,7 @@
 #include "gae_buffer.h"
 
 /* adds strings to gae_json_string structs to aid debugging */
-/*#define GAE_JSON_DEBUG 1 */
+#define GAE_JSON_DEBUG 1 
 
 typedef enum gae_json_type_e
 {	json_type_object
@@ -43,7 +43,7 @@ typedef struct gae_json_document_s {
 	gae_json_node_t* root;
 } gae_json_document_t;
 
-gae_json_document_t* gae_json_document_create(gae_json_document_t* doc, const char* path);
+gae_json_document_t* gae_json_document_init(gae_json_document_t* doc, const char* path);
 
 gae_json_document_t* gae_json_document_parse(gae_json_document_t* doc);
 

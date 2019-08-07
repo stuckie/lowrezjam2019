@@ -19,6 +19,7 @@ Tackle Shop
 
 Fishtionary
 List of all fish seen, caught and got away.
+Also all Rods, Lines, Weight and Bait.
 Smallest, Biggest landed of each type.
 Cancel goes back to Tackle Shop
 
@@ -62,4 +63,5 @@ Basic - 1sq
 Standard - 2sq
 Good - 3sq
 Excellent - 4sq
+Outstanding - 5sq
 

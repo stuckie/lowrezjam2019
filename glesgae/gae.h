@@ -15,6 +15,8 @@
 #include "gae_map.h"
 #include "gae_manager.h"
 #include "gae_list.h"
+#include "gae_js.h"
+#include "gae_sprite_sheet.h"
 
 /* Sub Systems */
 #include "gae_events.h"

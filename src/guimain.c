@@ -75,9 +75,12 @@ static void OnMouseEvent(void* userDatum, gae_event_t* event)
 	}
 }
 
+gae_sprite_sheet_t sprites;
+gae_rect_t boatRect;
 int main(int argc, char** argv)
 {
 	water_area_t waterArea;
+	gae_json_document_t jsDoc;
 	
 	gae_system.event_system = gae_event_system_init(gae_alloc(sizeof(gae_event_system_t)), 0);
 	gae_system.event_system->onMouseEvent = OnMouseEvent;
@@ -92,11 +95,16 @@ int main(int argc, char** argv)
 	gae_graphics_texture_init(&badger);
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/badger.bmp", &badger);
 	drawRect.x = 0; drawRect.y = 0; drawRect.w = 64; drawRect.h = 64;
+	boatRect.x = 16, boatRect.y = 16;
 	
 	water_area_init(&waterArea, 64, 64, 0);
 	water_area_print(&waterArea);
 	fillWaterTexture(&waterArea);
 	water_area_destroy(&waterArea);
+	
+	gae_json_document_init(&jsDoc, "data/sprites.json");
+	gae_json_document_parse(&jsDoc);
+	gae_sprite_sheet_init(&sprites, &jsDoc);
 	
 	(void)(argc);
 	(void)(argv);
@@ -105,6 +113,8 @@ int main(int argc, char** argv)
 	while (isRunning)
 		main_loop();
 	
+	gae_json_document_destroy(&jsDoc);
+	gae_sprite_sheet_destroy(&sprites);
 	gae_graphics_texture_destroy(&badger);
 	gae_graphics_window_destroy(gae_system.graphics.window);
 	gae_graphics_context_destroy(gae_system.graphics.context);
@@ -125,6 +135,7 @@ static void main_loop()
 	gae_graphics_context_clear(gae_system.graphics.context);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &waterTex, &drawRect, &drawRect);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &badger, &drawRect, &drawRect);
+	gae_sprite_sheet_draw(&sprites, gae_hashstring_calculate("boat"), &boatRect);
 	
 	gae_graphics_context_present(gae_system.graphics.context);
 	
