@@ -279,10 +279,10 @@ gae_json_node_t* gae_json_node_find(gae_json_document_t* doc, gae_json_node_t* f
 	if (0 == string_compare(doc, &(from->name), name))
 		return from;
 	
-	found = gae_json_node_find(doc, from->sibling, name);
+	found = gae_json_node_find(doc, from->child, name);
 	if (0 != found) return found;
 	
-	found = gae_json_node_find(doc, from->child, name);
+	found = gae_json_node_find(doc, from->sibling, name);
 	if (0 != found) return found;
 	
 	return 0;

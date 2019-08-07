@@ -65,3 +65,55 @@ Good - 3sq
 Excellent - 4sq
 Outstanding - 5sq
 
+Immediate Tasks:
+
+[x] Day 1 - Thursday
+Create a 64x64 surface, but allow window to be resized.
+Copy over the emscripten build.
+Start data structures for:
+	Fish
+	Rod
+	Bait
+	SaveGame
+	Area
+	
+Also decide on whether actually doing this in C or using GMS2
+Remember that glesgae2 has no sound.. though can probably rip that from glesgae1 without too much issue.
+And of course, most of glesgae does not exist!
+
+[x] Day 2 - Friday
+	Javascript work
+[x] Day 3 - Saturday
+	Graphics/mockup work
+[x] Day 4 - Sunday
+	Graphics/mockup work
+[x] Day 5 - Monday
+	Nope
+[x] Day 6 - Tuesday
+	Spritesheet implementation
+[ ] Day 7 - Wednesday
+	
+[ ] Day 8 - Thursday
+[ ] Day 9 - Friday
+[ ] Day 10 - Saturday
+[ ] Day 11 - Sunday
+[ ] Day 12 - Monday
+[ ] Day 13 - Tuesday - JS13k kicks off
+[ ] Day 14 - Wednesday
+[ ] Day 15 - Thursday
+[ ] Day 16 - Friday - last submission day
+
+Remaining Tasks:
+Audio System
+GUI System ( Button, Menu Tree )
+Game Flow ( Splash, Menu, Game )
+"Fish" database
+Equipment database
+Load/Save System
+Lake module
+Boat module
+Cast module
+Reel module
+Shop module
+Music
+Sound Effects
