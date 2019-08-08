@@ -1,23 +1,42 @@
 #include "gae.h"
 
+#include "fishy_structs.h"
 #include "fishy_splash.h"
 #include "fishy_lake.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct fish_framerate_s {
-	gae_timer_t cap;
-	float fps;
-	float ticksPerFrame;
-} fish_framerate_t;
-
-typedef struct fish_global_s {
-	fish_framerate_t framerate;
-	gae_stack_t stateStack;
-} fish_global_t;
-
 fish_global_t GLOBAL;
+
+static void OnKeyboardEvent(void* userDatum, gae_event_t* event)
+{
+	gae_keyboard_event_t* key = event->event;
+	fish_global_t* data = userDatum;
+	
+	data->keyboard.down[key->key] = key->isDown;
+}
+
+static void OnMouseEvent(void* userDatum, gae_event_t* event)
+{
+	fish_global_t* data = userDatum;
+	
+	switch (event->type) {
+		case GAE_EVENT_MOUSE_MOVE: {
+			gae_pointer_move_event_t* motion = event->event;
+			data->pointer.x = motion->x;
+			data->pointer.y = motion->y;
+		};
+		break;
+		case GAE_EVENT_MOUSE_BUTTON: {
+			gae_pointer_button_event_t* button = event->event;
+			data->pointer.isDown[button->buttonId] = button->isDown;
+		};
+		break;
+		default:
+		break;
+	}
+}
 
 #if defined(__EMSCRIPTEN__)
 #include <emscripten.h>
@@ -43,25 +62,8 @@ static void OnQuit(void* userDatum, gae_event_t* const event)
 	isRunning = 0;
 }
 
-static void OnMouseEvent(void* userDatum, gae_event_t* event)
-{
-	(void)(userDatum);
-	
-	switch (event->type) {
-		case GAE_EVENT_MOUSE_BUTTON: {
-
-		};
-		break;
-		default:
-		break;
-	}
-}
-
-gae_sprite_sheet_t sprites;
-gae_rect_t boatRect;
 int main(int argc, char** argv)
 {
-	gae_json_document_t jsDoc;
 	gae_state_t splash;
 	gae_state_t lake;
 	gae_state_t* current;
@@ -71,7 +73,7 @@ int main(int argc, char** argv)
     GLOBAL.framerate.fps = 1.0F / 60.0F;
     GLOBAL.framerate.ticksPerFrame = GLOBAL.framerate.fps * 1000.0F;
 	
-	gae_system.event_system = gae_event_system_init(gae_alloc(sizeof(gae_event_system_t)), 0);
+	gae_system.event_system = gae_event_system_init(gae_alloc(sizeof(gae_event_system_t)), &GLOBAL);
 	gae_system.event_system->onMouseEvent = OnMouseEvent;
 	
 	gae_system.graphics.window = gae_graphics_window_init(gae_alloc(sizeof(gae_graphics_window_t)), "Low Rez Fish'n", 0x2FFF0000U, 0x2FFF0000U, 512, 512, 0);
@@ -79,19 +81,15 @@ int main(int argc, char** argv)
 	
 	gae_graphics_context_set_render_size(gae_system.graphics.context, 64, 64);
 	
+	gae_system.event_system->onMouseEvent = OnMouseEvent;
+	gae_system.event_system->onKeyboardEvent = OnKeyboardEvent;
 	gae_system.event_system->onQuit = OnQuit;
-	boatRect.x = 16, boatRect.y = 16;
 	
 	fishy_lake_init(&lake);
 	fishy_splash_init(&splash);
 	gae_stack_init(&GLOBAL.stateStack, sizeof(gae_state_t));
 	gae_stack_push(&GLOBAL.stateStack, &lake);
 	gae_stack_push(&GLOBAL.stateStack, &splash);
-	
-	gae_json_document_init(&jsDoc, "data/sprites.json");
-	gae_json_document_parse(&jsDoc);
-	gae_sprite_sheet_init(&sprites, &jsDoc);
-	gae_json_document_destroy(&jsDoc);
 	
 	(void)(argc);
 	(void)(argv);
@@ -106,7 +104,6 @@ int main(int argc, char** argv)
 	current = gae_stack_peek(&GLOBAL.stateStack);
 	if (0 != current)(*current->onStop)(current->userData);
 	
-	gae_sprite_sheet_destroy(&sprites);
 	gae_graphics_window_destroy(gae_system.graphics.window);
 	gae_graphics_context_destroy(gae_system.graphics.context);
 	gae_event_system_destroy(gae_system.event_system);
