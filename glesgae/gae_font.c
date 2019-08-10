@@ -30,9 +30,9 @@ gae_font_t* gae_font_init(gae_font_t* font, unsigned int width, unsigned int hei
 	return font;
 }
 
-gae_font_t* gae_font_setColour(gae_font_t* font, gae_byte r, gae_byte g, gae_byte b)
+gae_font_t* gae_font_setColour(gae_font_t* font, gae_colour_rgba* const colour)
 {
-	gae_graphics_context_texture_colour(gae_system.graphics.context, font->texture, r, g, b);
+	gae_graphics_context_texture_colour(gae_system.graphics.context, font->texture, colour);
 	return font;
 }
 

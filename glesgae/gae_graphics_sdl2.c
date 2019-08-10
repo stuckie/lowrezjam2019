@@ -1,7 +1,7 @@
 #include "gae_graphics_sdl2.h"
 #include "gae_rect.h"
 #include "gae_buffer.h"
-
+#include "gae_colour.h"
 
 gae_graphics_window_t* gae_graphics_window_init(gae_graphics_window_t* window, const char* const name, int x, int y, int w, int h, unsigned int flags)
 {
@@ -71,9 +71,37 @@ gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t
 	return context;
 }
 
-gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, gae_byte r, gae_byte g, gae_byte b)
+gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, gae_colour_rgba* const colour)
 {
-	SDL_SetTextureColorMod(texture->data, r, g, b);
+	SDL_SetTextureColorMod(texture->data, colour->r, colour->g, colour->b);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphics_context_set_draw_colour(gae_graphics_context_t* const context, gae_colour_rgba* const colour)
+{
+	SDL_SetRenderDrawColor(context->data, colour->r, colour->g, colour->b, colour->a);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphis_context_get_draw_colour(gae_graphics_context_t* const context, gae_colour_rgba* colour)
+{
+	SDL_GetRenderDrawColor(context->data, &colour->r, &colour->g, &colour->b, &colour->a);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphics_context_draw_rect(gae_graphics_context_t* const context, gae_rect_t* const rect)
+{
+	SDL_RenderDrawRect(context->data, (SDL_Rect*)rect);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphics_context_draw_filled_rect(gae_graphics_context_t* const context, gae_rect_t* const rect)
+{
+	SDL_RenderFillRect(context->data, (SDL_Rect*)rect);
 	
 	return context;
 }

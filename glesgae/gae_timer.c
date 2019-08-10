@@ -16,12 +16,12 @@ gae_timer_t* gae_timer_init(gae_timer_t* timer, gae_clock_t* const clock)
 gae_timer_t* gae_timer_update(gae_timer_t* timer, gae_clock_t* const clock)
 {
 	if (0.0F != timer->scale)
-		timer->deltaTime = clock->deltaTime - timer->lastTime;
+		timer->deltaTime = (clock->deltaTime - timer->lastTime) * timer->scale;
 	else
 		timer->deltaTime = 0.0F;
 	
 	timer->lastTime = clock->deltaTime;
-	timer->currentTime += timer->deltaTime * timer->scale;
+	timer->currentTime += timer->deltaTime;
 
 	return timer;
 }

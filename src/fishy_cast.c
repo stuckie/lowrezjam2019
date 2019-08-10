@@ -1,44 +1,179 @@
 #include "fishy_cast.h"
+#include "fishy_reel.h"
+#include "fishy_structs.h"
 
 #include "gae.h"
 
+#define SWING_SPEED 10
+
+enum swing
+{	swing_back
+,	swing_fore
+,	swing_cast
+};
+
 typedef struct fishy_cast_s {
-	gae_camera_t camera;
 	gae_timer_t timer;
 	
-	int backSwing;
-	int foreSwing;
+	float backSwing;
+	float foreSwing;
+	
+	float lockedBackSwing;
+	float lockedForeSwing;
 	
 	gae_sprite_sheet_t sprites;
 	gae_graphics_texture_t ui;
-	gae_rect_t uiRect;
+	gae_rect_t castRect;
+	gae_rect_t backSwingPoint;
+	gae_rect_t foreSwingPoint;
+	
+	int buttonDown;
+	enum swing swing;
 } fishy_cast_t;
 
 static int onStart(void* userData)
 {
 	fishy_cast_t* data = userData;
+	gae_json_document_t jsDoc;
+	
+	gae_json_document_init(&jsDoc, "data/sprites.json");
+	gae_json_document_parse(&jsDoc);
+	gae_sprite_sheet_init(&data->sprites, &jsDoc);
+	gae_json_document_destroy(&jsDoc);
 	
 	gae_graphics_texture_init(&data->ui);
-	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/lake_ui.bmp", &data->ui);
+	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/cast_ui.bmp", &data->ui);
 	
-	data->uiRect.x = 0;
-	data->uiRect.y = 48;
-	data->uiRect.w = 64;
-	data->uiRect.h = 16;
+	gae_timer_init(&data->timer, gae_system.main_clock);
+	data->timer.scale = SWING_SPEED;
+	
+	data->castRect.x = 34;
+	data->castRect.y = 37;
+	data->castRect.w = 29;
+	data->castRect.h = 4;
+	
+	data->backSwingPoint.x = 48;
+	data->backSwingPoint.y = 38;
+	data->backSwingPoint.h = 1;
+	data->backSwingPoint.w = -10;
+	
+	data->foreSwingPoint.x = 48;
+	data->foreSwingPoint.y = 39;
+	data->foreSwingPoint.h = 1;
+	data->foreSwingPoint.w = 10;
+	
+	data->backSwing = data->lockedBackSwing = 0;
+	data->foreSwing = data->lockedForeSwing = 0;
+	
+	data->buttonDown = GLOBAL.pointer.isDown[0];
+	
+	data->swing = swing_back;
 	
 	return 0;
 }
 
+static void drawBackSwing(fishy_cast_t* data)
+{
+	gae_colour_rgba colour;
+	
+	if (swing_back == data->swing)
+		data->backSwing += data->timer.deltaTime;
+	
+	gae_colour_rgba_set_yellow(colour);
+	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
+	data->backSwingPoint.w = -data->backSwing;
+	gae_graphics_context_draw_filled_rect(gae_system.graphics.context, &data->backSwingPoint);
+}
+
+static void drawForeSwing(fishy_cast_t* data)
+{
+	gae_colour_rgba colour;
+	
+	if (swing_fore == data->swing)
+		data->foreSwing += data->timer.deltaTime;
+	
+	gae_colour_rgba_set_green(colour);
+	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
+	data->foreSwingPoint.w = data->foreSwing;
+	gae_graphics_context_draw_filled_rect(gae_system.graphics.context, &data->foreSwingPoint);
+}
+
+static void lockSwing(fishy_cast_t* data, int buttonDown)
+{
+	if (1 == buttonDown) {
+		switch (data->swing) {
+			case swing_back: { 	/* lock backswing and start foreswing */
+				data->lockedBackSwing = data->backSwing;
+				data->foreSwingPoint.x = data->backSwingPoint.x + data->backSwingPoint.w;
+				data->swing = swing_fore;
+			};
+			break;
+			case swing_fore: {							/* cast the line! */
+				data->lockedForeSwing = data->foreSwing;
+				data->swing = swing_cast;
+			};
+			break;
+			case swing_cast: {
+				gae_colour_rgba colour;
+				gae_state_t reelState;
+				gae_state_t* current = gae_stack_peek(&GLOBAL.stateStack);
+				if (0 != current->onStop) (*current->onStop)(data);
+	
+				fishy_reel_init(&reelState);
+				if (0 != reelState.onStart) (*reelState.onStart)(reelState.userData);
+				gae_stack_replace(&GLOBAL.stateStack, &reelState);
+				
+				colour.r = 0; colour.g = 180; colour.b = 255; colour.a = 255;
+				gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
+			};
+			break;
+		}
+	}
+}
+
 static int onUpdate(void* userData)
 {
-	(void)(userData);
+	fishy_cast_t* data = userData;
+	gae_colour_rgba colour;
+	int buttonDown = 0;
+	
+	if (0 == data->buttonDown && 1 == GLOBAL.pointer.isDown[0]) {
+		data->buttonDown = 1;
+		buttonDown = 1;
+	}
+	
+	if (1 == data->buttonDown && 0 == GLOBAL.pointer.isDown[0])
+		data->buttonDown = 0;
+	
+	gae_timer_update(&data->timer, gae_system.main_clock);
+	
+	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->ui, 0, 0);
+	
+	gae_colour_rgba_set_white(colour);
+	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
+	gae_graphics_context_draw_filled_rect(gae_system.graphics.context, &data->castRect);
+	
+	drawBackSwing(data);
+	drawForeSwing(data);
+	
+	gae_sprite_sheet_draw(&data->sprites, gae_hashstring_calculate("cast-meter"), &data->castRect);
+	
+	if (data->backSwing >= 14) data->timer.scale = -SWING_SPEED;
+	else if (data->backSwing <= 0) data->timer.scale = SWING_SPEED;
+	if (data->castRect.x - data->foreSwingPoint.x + data->foreSwing > 27) data->timer.scale = -SWING_SPEED;
+	else if (data->foreSwing < 0) data->timer.scale = SWING_SPEED;
+	
+	lockSwing(data, buttonDown);
 	
 	return 0;
 }
 
 static int onStop(void* userData)
 {
-	(void)(userData);
+	fishy_cast_t* data = userData;
+	
+	gae_graphics_texture_destroy(&data->ui);
+	gae_sprite_sheet_destroy(&data->sprites);
 	
 	return 0;
 }

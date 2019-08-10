@@ -77,6 +77,7 @@ static void onCastButton(void* userData)
 	gae_state_t castState;
 	
 	fishy_cast_init(&castState);
+	if (0 != castState.onStart) (*castState.onStart)(castState.userData);
 	gae_stack_push(&GLOBAL.stateStack, &castState);
 	
 	(void)(userData);

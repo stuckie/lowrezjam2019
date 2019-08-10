@@ -27,6 +27,7 @@ enum gae_graphics_window_flags
 
 struct gae_rect_s;
 struct gae_buffer_s;
+struct gae_colour_rgba_s;
 
 /* Initialise a new window with the given name at the specified position, with the given width and height, and flags */
 gae_graphics_window_t* gae_graphics_window_init(gae_graphics_window_t* window, const char* const name, int x, int y, int w, int h, unsigned int flags);
@@ -50,7 +51,19 @@ gae_graphics_context_t* gae_graphics_context_texture_load_from_file(gae_graphics
 gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t* const context, gae_graphics_texture_t* const texture, struct gae_rect_s* const src, struct gae_rect_s* const dest);
 
 /* Modulate texture colour */
-gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, gae_byte r, gae_byte g, gae_byte b);
+gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, struct gae_colour_rgba_s* const colour);
+
+/* Set Draw Colour */
+gae_graphics_context_t* gae_graphics_context_set_draw_colour(gae_graphics_context_t* const context, struct gae_colour_rgba_s* const colour);
+
+/* Get Draw Colour */
+gae_graphics_context_t* gae_graphis_context_get_draw_colour(gae_graphics_context_t* const context, struct gae_colour_rgba_s* colour);
+
+/* Draw a rectangle */
+gae_graphics_context_t* gae_graphics_context_draw_rect(gae_graphics_context_t* const context, struct gae_rect_s* const rect);
+
+/* Draw a filled rectangle */
+gae_graphics_context_t* gae_graphics_context_draw_filled_rect(gae_graphics_context_t* const context, struct gae_rect_s* const rect);
 
 /* Set context render size */
 gae_graphics_context_t* gae_graphics_context_set_render_size(gae_graphics_context_t* const context, int w, int h);
