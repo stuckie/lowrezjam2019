@@ -1,6 +1,8 @@
 #ifndef _GAE_POINT_H_
 #define _GAE_POINT_H_
 
+#include "gae_rect.h"
+
 typedef struct gae_point_2d_s {
 	float x;
 	float y;
@@ -28,6 +30,10 @@ float gae_point_distancef(float x1, float y1, float x2, float y2);
 float gae_point_distancef2(float x1, float y1, float x2, float y2);
 
 /* point 2d api */
+
+/* work out whether the given point is in the given rectangle. 1 - yes, 0 - no */
+int gae_point2d_in_rectangle(gae_point_2d_t point, gae_rect_t rect);
+
 /* point 3d api */
 /* point 4d api */
 

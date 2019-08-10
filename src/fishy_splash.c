@@ -83,8 +83,7 @@ static void addSplash(gae_list_t* list, const char* path, float time)
 	splash->timer.currentTime = time;
 	splash->timer.scale = -1.0F;
 	
-	node->data = splash;
-	
+	gae_list_node_init(node, splash);	
 	gae_list_add(list, node);
 }
 

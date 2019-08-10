@@ -1,0 +1,11 @@
+{
+	"name": "Button",
+	"filename": "data/shop-button.bmp",
+	"last update": "10th August",
+	"sprites": [
+		{ "inactive" : 	[	0,	0,	13,	13 ] },
+		{ "active" : 	[	0,	13,	13,	13 ] },
+		{ "hover" : 	[	0,	26,	13,	13 ] },
+		{ "pressed" : 	[	0,	39,	13,	13 ] }
+	]
+}

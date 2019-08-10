@@ -23,6 +23,7 @@ typedef struct fishy_controller_s {
 } fishy_controller_t;
 
 typedef struct fish_global_s {
+	gae_sprite_sheet_t sprites;
 	fish_framerate_t framerate;
 	gae_stack_t stateStack;
 	

@@ -33,6 +33,8 @@
 #include "gae_font.h"
 #include "gae_nineslice.h"
 #include "gae_sprite.h"
+#include "gae_camera.h"
+#include "gae_button.h"
 
 /* Maths */
 #include "gae_point.h"

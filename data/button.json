@@ -1,0 +1,11 @@
+{
+	"name": "Button",
+	"filename": "data/button.bmp",
+	"last update": "10th August",
+	"sprites": [
+		{ "inactive" : 	[	0,	0,	16,	8 ] },
+		{ "active" : 	[	0,	8,	16,	8 ] },
+		{ "hover" : 	[	0,	16,	16,	8 ] },
+		{ "pressed" : 	[	0,	24,	16,	8 ] }
+	]
+}
