@@ -15,11 +15,9 @@ typedef struct gae_sprite_sheet_s {
 
 gae_sprite_sheet_t* gae_sprite_sheet_init(gae_sprite_sheet_t* sheet, struct gae_json_document_s* jsDoc);
 
-/*
- * Now, do we want to gae_sprite_sheet_draw("name", dstRect)?
- * Or do we want gae_sprite_sheet_rect("name", &srcRect) and draw later?
- */
 gae_sprite_sheet_t* gae_sprite_sheet_draw(gae_sprite_sheet_t* const sheet, gae_hashstring sprite, struct gae_rect_s* const pos);
+
+struct gae_rect_s* gae_sprite_sheet_get_rect(gae_sprite_sheet_t* const sheet, gae_hashstring sprite);
 
 gae_sprite_sheet_t* gae_sprite_sheet_destroy(gae_sprite_sheet_t* sheet);
 

@@ -1,8 +1,6 @@
 #include "gae.h"
 
 #include "fishy_structs.h"
-#include "fishy_splash.h"
-#include "fishy_lake.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,8 +22,8 @@ static void OnMouseEvent(void* userDatum, gae_event_t* event)
 	switch (event->type) {
 		case GAE_EVENT_MOUSE_MOVE: {
 			gae_pointer_move_event_t* motion = event->event;
-			data->pointer.x = motion->x;
-			data->pointer.y = motion->y;
+			data->pointer.x = motion->x / 8;
+			data->pointer.y = motion->y / 8;
 		};
 		break;
 		case GAE_EVENT_MOUSE_BUTTON: {
@@ -79,7 +77,8 @@ int main(int argc, char** argv)
 	gae_system.graphics.window = gae_graphics_window_init(gae_alloc(sizeof(gae_graphics_window_t)), "Low Rez Fish'n", 0x2FFF0000U, 0x2FFF0000U, 512, 512, 0);
 	gae_system.graphics.context = gae_graphics_context_init(gae_alloc(sizeof(gae_graphics_context_t)), gae_system.graphics.window, 0);
 	
-	gae_graphics_context_set_render_size(gae_system.graphics.context, 64, 64);
+	gae_graphics_context_init_render_target(gae_system.graphics.context, &GLOBAL.frameBuffer, 64, 64, 32);
+	/*gae_graphics_context_set_render_size(gae_system.graphics.context, 64, 64);*/
 	
 	gae_system.event_system->onMouseEvent = OnMouseEvent;
 	gae_system.event_system->onKeyboardEvent = OnKeyboardEvent;
@@ -136,6 +135,8 @@ static void main_loop()
 	
 	gae_event_system_update(gae_system.event_system);
 	
+	gae_graphics_context_set_render_target(gae_system.graphics.context, &GLOBAL.frameBuffer);
+	
 	gae_graphics_context_clear(gae_system.graphics.context);
 	if (0 != (*state->onUpdate)(state->userData)) {
 		(*state->onStop)(state->userData);
@@ -143,6 +144,9 @@ static void main_loop()
 		state = gae_stack_peek(&GLOBAL.stateStack);
 		if (0 != state) (*state->onStart)(state->userData);
 	}
+	
+	gae_graphics_context_set_render_target(gae_system.graphics.context, 0);
+	gae_graphics_context_blit_texture(gae_system.graphics.context, &GLOBAL.frameBuffer, 0, 0);
 	
 	gae_graphics_context_present(gae_system.graphics.context);
 	

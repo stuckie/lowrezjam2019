@@ -23,6 +23,7 @@ typedef struct fishy_controller_s {
 } fishy_controller_t;
 
 typedef struct fish_global_s {
+	gae_graphics_texture_t frameBuffer;
 	gae_sprite_sheet_t sprites;
 	fish_framerate_t framerate;
 	gae_stack_t stateStack;
@@ -92,5 +93,13 @@ typedef struct player_rod_s {
 } player_rod_t;
 
 extern fish_global_t GLOBAL;
+
+struct gae_state_s;
+struct gae_state_s* fishy_splash_init(struct gae_state_s* state);
+struct gae_state_s* fishy_shop_init(struct gae_state_s* state);
+struct gae_state_s* fishy_lake_init(struct gae_state_s* state);
+struct gae_state_s* fishy_cast_init(struct gae_state_s* state);
+struct gae_state_s* fishy_reel_init(struct gae_state_s* state);
+struct gae_state_s* fishy_land_init(struct gae_state_s* state);
 
 #endif

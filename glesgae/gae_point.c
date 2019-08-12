@@ -18,3 +18,23 @@ int gae_point2d_in_rectangle(gae_point_2d_t point, gae_rect_t rect)
 {
 	return !(point.x < rect.x || point.y < rect.y || point.x > rect.x + rect.w || point.y > rect.y + rect.h);
 }
+
+gae_point_2d_t gae_point2d_rotate(gae_point_2d_t* const origin, float radians, gae_point_2d_t* const p)
+{
+	gae_point_2d_t pp = *p;
+	gae_point_2d_t rot;
+	
+	float s = sin(radians);
+	float c = cos(radians);
+	
+	pp.x -= origin->x;
+	pp.y -= origin->y;
+	
+	rot.x = pp.x * c - pp.y * s;
+	rot.y = pp.x * s + pp.y * c;
+	
+	pp.x = rot.x + origin->x;
+	pp.y = rot.y + origin->y;
+	
+	return pp;
+}

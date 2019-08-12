@@ -1,7 +1,5 @@
 #include "fishy_structs.h"
-#include "fishy_lake.h"
 #include "fishy_area.h"
-#include "fishy_cast.h"
 
 #include "gae.h"
 
@@ -140,6 +138,7 @@ static int onUpdate(void* userData)
 {
 	fishy_lake_state_t* data = userData;
 	gae_point_2d_t pointer;
+	gae_colour_rgba colour;
 	
 	if (1 == data->quit) return 1;
 	
@@ -169,11 +168,15 @@ static int onUpdate(void* userData)
 	data->camera.view.x = gae_lerp(data->camera.view.x, data->boatRect.x - 16, 0.1);
 	data->camera.view.y = gae_lerp(data->camera.view.y, data->boatRect.y - 16, 0.1);
 	
+	gae_colour_rgba_set_blue(colour);
+	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->waterTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->waterTex, &data->camera.view, &data->camera.port);
 	gae_sprite_sheet_draw(&data->sprites, gae_hashstring_calculate("boat"), &data->boatRect);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->ui, 0, &data->uiRect);
 	gae_button_update(&data->shop, &pointer, GLOBAL.pointer.isDown[0]);
 	gae_button_update(&data->cast, &pointer, GLOBAL.pointer.isDown[0]);
+	gae_colour_rgba_set_white(colour);
+	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->waterTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->waterTex, &data->minimap.view, &data->minimap.port);
 	
 	return 0;

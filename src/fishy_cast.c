@@ -1,5 +1,3 @@
-#include "fishy_cast.h"
-#include "fishy_reel.h"
 #include "fishy_structs.h"
 
 #include "gae.h"

@@ -1,4 +1,4 @@
-#include "fishy_splash.h"
+#include "fishy_structs.h"
 
 #include "gae.h"
 

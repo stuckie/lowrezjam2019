@@ -34,6 +34,9 @@ float gae_point_distancef2(float x1, float y1, float x2, float y2);
 /* work out whether the given point is in the given rectangle. 1 - yes, 0 - no */
 int gae_point2d_in_rectangle(gae_point_2d_t point, gae_rect_t rect);
 
+/* returns new point rotated around an origin */
+gae_point_2d_t gae_point2d_rotate(gae_point_2d_t* const origin, float radians, gae_point_2d_t* const p);
+
 /* point 3d api */
 /* point 4d api */
 

@@ -1,5 +1,6 @@
 #include "gae_graphics_sdl2.h"
 #include "gae_rect.h"
+#include "gae_point.h"
 #include "gae_buffer.h"
 #include "gae_colour.h"
 
@@ -71,6 +72,17 @@ gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t
 	return context;
 }
 
+gae_graphics_context_t* gae_graphics_context_blit_texture_params(gae_graphics_context_t* const context, gae_graphics_context_blit_params_t* const params)
+{
+	SDL_Point p;
+	p.x = params->origin->x;
+	p.y = params->origin->y;
+	
+	SDL_RenderCopyEx(context->data, params->texture->data, (SDL_Rect*)(params->srcRect), (SDL_Rect*)(params->dstRect), params->degrees, &p, SDL_FLIP_NONE);
+	
+	return context;
+}
+
 gae_graphics_context_t* gae_graphics_context_texture_colour(gae_graphics_context_t* const context, gae_graphics_texture_t* texture, gae_colour_rgba* const colour)
 {
 	SDL_SetTextureColorMod(texture->data, colour->r, colour->g, colour->b);
@@ -85,9 +97,23 @@ gae_graphics_context_t* gae_graphics_context_set_draw_colour(gae_graphics_contex
 	return context;
 }
 
-gae_graphics_context_t* gae_graphis_context_get_draw_colour(gae_graphics_context_t* const context, gae_colour_rgba* colour)
+gae_graphics_context_t* gae_graphics_context_get_draw_colour(gae_graphics_context_t* const context, gae_colour_rgba* colour)
 {
 	SDL_GetRenderDrawColor(context->data, &colour->r, &colour->g, &colour->b, &colour->a);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphics_context_draw_point(gae_graphics_context_t* const context, gae_point_2d_t* const p)
+{
+	SDL_RenderDrawPoint(context->data, p->x, p->y);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphics_context_draw_line(gae_graphics_context_t* const context, gae_point_2d_t* const a, gae_point_2d_t* const b)
+{
+	SDL_RenderDrawLine(context->data, a->x, a->y, b->x, b->y);
 	
 	return context;
 }
@@ -128,6 +154,29 @@ gae_graphics_texture_t* gae_graphics_texture_init(gae_graphics_texture_t* textur
 	texture->h = 0;
 	
 	return texture;
+}
+
+gae_graphics_context_t* gae_graphics_context_init_render_target(gae_graphics_context_t* context, gae_graphics_texture_t* texture, int width, int height, int depth)
+{
+	texture->w = width;
+	texture->h = height;
+	
+	if (32 == depth)
+		texture->data = SDL_CreateTexture(context->data, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height);
+	else if (24 == depth)
+		texture->data = SDL_CreateTexture(context->data, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, width, height);
+	
+	return context;
+}
+
+gae_graphics_context_t* gae_graphics_context_set_render_target(gae_graphics_context_t* context, gae_graphics_texture_t* const texture)
+{
+	if (0 != texture)
+		SDL_SetRenderTarget(context->data, texture->data);
+	else
+		SDL_SetRenderTarget(context->data, 0);
+	
+	return context;
 }
 
 static gae_graphics_texture_t* gae_graphics_texture_from_surface(gae_graphics_texture_t* texture, SDL_Renderer* renderer, SDL_Surface* surface)

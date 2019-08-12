@@ -66,6 +66,11 @@ gae_sprite_sheet_t* gae_sprite_sheet_init(gae_sprite_sheet_t* sheet, gae_json_do
 	return sheet;
 }
 
+gae_rect_t* gae_sprite_sheet_get_rect(gae_sprite_sheet_t* const sheet, gae_hashstring sprite)
+{
+	return gae_map_get(&sheet->data, &sprite);
+}
+
 gae_sprite_sheet_t* gae_sprite_sheet_draw(gae_sprite_sheet_t* const sheet, gae_hashstring sprite, gae_rect_t* const pos)
 {
 	gae_rect_t* drawRect = gae_map_get(&sheet->data, &sprite);
