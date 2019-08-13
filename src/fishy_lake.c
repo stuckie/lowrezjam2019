@@ -1,7 +1,40 @@
 #include "fishy_structs.h"
 #include "fishy_area.h"
+#include "fishy_timer.h"
 
 #include "gae.h"
+
+typedef struct lake_boat_s {
+	gae_point_2d_t pos;
+	gae_point_2d_t target;
+	gae_point_2d_t tile;
+	
+	gae_hashstring boatIds[2];
+	int currentBoatAnim;
+	
+	gae_rect_t boatRect;
+	gae_timer_t animTimer;
+} lake_boat_t;
+
+lake_boat_t* lake_boat_init(lake_boat_t* boat)
+{
+	boat->pos.x = 0; boat->pos.y = 0;
+	boat->target.x = 0; boat->target.x = 0;
+	boat->tile.x = 0; boat->tile.x = 0;
+	
+	boat->boatIds[0] = gae_hashstring_calculate("boat");
+	boat->boatIds[1] = gae_hashstring_calculate("boat2");
+	boat->currentBoatAnim = 0;
+	
+	boat->boatRect.x = boat->pos.x;
+	boat->boatRect.y = boat->pos.y;
+	
+	gae_timer_init(&boat->animTimer, gae_system.main_clock);
+	boat->animTimer.currentTime = 1.0F;
+	boat->animTimer.scale = -1;
+	
+	return boat;
+}
 
 typedef struct fishy_lake_state_s {
 	gae_sprite_sheet_t sprites;
@@ -10,19 +43,33 @@ typedef struct fishy_lake_state_s {
 	
 	gae_rect_t uiRect;
 	gae_rect_t drawRect;
-	gae_rect_t boatRect;
 	
 	gae_camera_t camera;
 	gae_camera_t minimap;
 	
-	gae_point_2d_t boatDest;
 	water_area_t waterArea;
+	
+	lake_boat_t boat;
+	fishy_timer_t time;
 	
 	gae_button_t cast;
 	gae_button_t shop;
 	
 	int quit;
 } fishy_lake_state_t;
+
+lake_boat_t* lake_boat_update(lake_boat_t* boat, fishy_lake_state_t* data)
+{
+	gae_timer_update(&boat->animTimer, gae_system.main_clock);
+	if (0 > boat->animTimer.currentTime) {
+		boat->animTimer.currentTime = 1.0F;
+		boat->currentBoatAnim = !boat->currentBoatAnim;
+	}
+	
+	gae_sprite_sheet_draw(&data->sprites, boat->boatIds[boat->currentBoatAnim], &boat->boatRect);
+	
+	return boat;
+}
 
 static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTex)
 {
@@ -121,10 +168,8 @@ static int onStart(void* userData)
 	data->uiRect.w = 64;
 	data->uiRect.h = 16;
 	
-	data->boatRect.x = 0;
-	data->boatRect.y = 0;
-	data->boatDest.x = 32;
-	data->boatDest.y = 32;
+	lake_boat_init(&data->boat);
+	fishy_timer_init(&data->time);
 	
 	makeButton(&data->cast, "data/cast-button.json", 34, 50, onCastButton, data);
 	makeButton(&data->shop, "data/shop-button.json", 1, 50, onShopButton, data);
@@ -138,6 +183,7 @@ static int onUpdate(void* userData)
 {
 	fishy_lake_state_t* data = userData;
 	gae_point_2d_t pointer;
+	gae_point_2d_t time;
 	gae_colour_rgba colour;
 	
 	if (1 == data->quit) return 1;
@@ -150,8 +196,8 @@ static int onUpdate(void* userData)
 	else if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_Z]) { data->camera.view.h++; data->camera.view.w++; }
 	
 	if (1 == GLOBAL.pointer.isDown[0]) { 
-		data->boatDest.x = GLOBAL.pointer.x;
-		data->boatDest.y = GLOBAL.pointer.y;
+		data->boat.target.x = GLOBAL.pointer.x;
+		data->boat.target.y = GLOBAL.pointer.y;
 	}
 	
 	/*
@@ -162,22 +208,29 @@ static int onUpdate(void* userData)
 	pointer.x = GLOBAL.pointer.x;
 	pointer.y = GLOBAL.pointer.y;
 	
-	data->boatRect.x = gae_lerp(data->boatRect.x, data->boatDest.x, 0.1);
-	data->boatRect.y = gae_lerp(data->boatRect.y, data->boatDest.y, 0.1);
+	time.x = 15;
+	time.y = 53;
 	
-	data->camera.view.x = gae_lerp(data->camera.view.x, data->boatRect.x - 16, 0.1);
-	data->camera.view.y = gae_lerp(data->camera.view.y, data->boatRect.y - 16, 0.1);
+	fishy_timer_update(&data->time);
+	
+	/*data->boatRect.x = gae_lerp(data->boatRect.x, data->boatDest.x, 0.1);
+	data->boatRect.y = gae_lerp(data->boatRect.y, data->boatDest.y, 0.1);*/
+	
+	/*data->camera.view.x = gae_lerp(data->camera.view.x, data->boatRect.x - 16, 0.1);
+	data->camera.view.y = gae_lerp(data->camera.view.y, data->boatRect.y - 16, 0.1);*/
 	
 	gae_colour_rgba_set_blue(colour);
 	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->waterTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->waterTex, &data->camera.view, &data->camera.port);
-	gae_sprite_sheet_draw(&data->sprites, gae_hashstring_calculate("boat"), &data->boatRect);
+	/*gae_sprite_sheet_draw(&data->sprites, gae_hashstring_calculate("boat"), &data->boatRect);*/
+	lake_boat_update(&data->boat, data);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->ui, 0, &data->uiRect);
 	gae_button_update(&data->shop, &pointer, GLOBAL.pointer.isDown[0]);
 	gae_button_update(&data->cast, &pointer, GLOBAL.pointer.isDown[0]);
 	gae_colour_rgba_set_white(colour);
 	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->waterTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->waterTex, &data->minimap.view, &data->minimap.port);
+	fishy_timer_draw(&data->time, time);
 	
 	return 0;
 }

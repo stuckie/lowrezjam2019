@@ -4,8 +4,12 @@
 #include "gae.h"
 
 typedef struct fishy_timer_s {
+	gae_sprite_sheet_t font;
+	
 	int minutes;
 	int seconds;
+
+	gae_hashstring blip;
 	
 	gae_timer_t timer;
 } fishy_timer_t;
