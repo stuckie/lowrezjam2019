@@ -119,10 +119,10 @@ static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTe
 static void setupCameras(fishy_lake_state_t* data)
 {
 	gae_point_2d_t mainView, mainPort, miniView, miniPort;
-	mainView.x = 8; mainView.y = 8;		/* width/height of view into texture */
-	mainPort.x = 64; mainPort.y = 64;	/* width/height of port on screen */
+	mainView.x = 8; mainView.y = 6;		/* width/height of view into texture */
+	mainPort.x = 64; mainPort.y = 48;	/* width/height of port on screen */
 	
-	miniView.x = 13; miniView.y = 13;	/* width/height of view into texture */
+	miniView.x = 8; miniView.y = 6;	/* width/height of view into texture */
 	miniPort.x = 13; miniPort.y = 13;	/* width/height of port on screen */
 	
 	gae_camera_init(&data->camera, mainView, mainPort);
@@ -164,7 +164,7 @@ static int onStart(void* userData)
 	fishy_lake_state_t* data = userData;
 	gae_json_document_t jsDoc;
 	
-	water_area_init(&data->waterArea, 64, 64, 0);
+	water_area_init(&data->waterArea, 8, 6, 0);
 	/*water_area_print(&data->waterArea);*/
 	fillWaterTexture(&data->waterArea, &data->minimapTex, 0);
 	fillWaterTexture(&data->waterArea, &data->waterTex, 1);
