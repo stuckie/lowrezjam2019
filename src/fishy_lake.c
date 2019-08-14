@@ -4,6 +4,8 @@
 
 #include "gae.h"
 
+#include <math.h>
+
 typedef struct lake_boat_s {
 	gae_point_2d_t pos;
 	gae_point_2d_t target;
@@ -39,6 +41,7 @@ lake_boat_t* lake_boat_init(lake_boat_t* boat)
 typedef struct fishy_lake_state_s {
 	gae_sprite_sheet_t sprites;
 	gae_graphics_texture_t waterTex;
+	gae_graphics_texture_t minimapTex;
 	gae_graphics_texture_t ui;
 	
 	gae_rect_t uiRect;
@@ -66,12 +69,23 @@ lake_boat_t* lake_boat_update(lake_boat_t* boat, fishy_lake_state_t* data)
 		boat->currentBoatAnim = !boat->currentBoatAnim;
 	}
 	
+	if (boat->pos.x > boat->target.x) boat->pos.x -= 0.1f;
+	else if (boat->pos.x < boat->target.x) boat->pos.x += 0.1F;
+	if (fabs(boat->pos.x - boat->target.x) < 0.5F) boat->pos.x = boat->target.x;
+	
+	if (boat->pos.y > boat->target.y) boat->pos.y -= 0.1F;
+	else if (boat->pos.y < boat->target.y) boat->pos.y += 0.1F;
+	if (fabs(boat->pos.y - boat->target.y) < 0.5F) boat->pos.y = boat->target.y;
+	
+	boat->boatRect.x = boat->pos.x;
+	boat->boatRect.y = boat->pos.y;
+	
 	gae_sprite_sheet_draw(&data->sprites, boat->boatIds[boat->currentBoatAnim], &boat->boatRect);
 	
 	return boat;
 }
 
-static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTex)
+static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTex, int reverse)
 {
 	gae_buffer_t texBuffer;
 	int i = 0;
@@ -87,7 +101,8 @@ static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTe
 		
 		hsv.h = 200;
 		hsv.s = 0.0;
-		hsv.v = (float)(tile->depth / 10.0F);
+		if (1 == reverse) hsv.v = 1.0F - (float)(tile->depth / 10.0F);
+		else hsv.v = (float)(tile->depth / 10.0F);
 		
 		rgba = gae_colour_hsv_to_rgb(hsv);
 		
@@ -151,7 +166,8 @@ static int onStart(void* userData)
 	
 	water_area_init(&data->waterArea, 64, 64, 0);
 	/*water_area_print(&data->waterArea);*/
-	fillWaterTexture(&data->waterArea, &data->waterTex);
+	fillWaterTexture(&data->waterArea, &data->minimapTex, 0);
+	fillWaterTexture(&data->waterArea, &data->waterTex, 1);
 	water_area_destroy(&data->waterArea);
 	
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/lake_ui.bmp", &data->ui);
@@ -178,58 +194,44 @@ static int onStart(void* userData)
 	
 	return 0;
 }
-#include "SDL2/SDL.h"
+
 static int onUpdate(void* userData)
 {
 	fishy_lake_state_t* data = userData;
 	gae_point_2d_t pointer;
 	gae_point_2d_t time;
 	gae_colour_rgba colour;
+	gae_rect_t pointerRect;
 	
 	if (1 == data->quit) return 1;
-	
-	if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_LEFT]) { data->camera.view.x--; data->minimap.view.x--; }
-	else if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_RIGHT]) { data->camera.view.x++; data->minimap.view.x++; }
-	if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_UP]) { data->camera.view.y--; data->minimap.view.y--; }
-	else if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_DOWN]) { data->camera.view.y++; data->minimap.view.y++; }
-	if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_A]) { data->camera.view.h--; data->camera.view.w--; }
-	else if (1 == GLOBAL.keyboard.down[SDL_SCANCODE_Z]) { data->camera.view.h++; data->camera.view.w++; }
-	
-	if (1 == GLOBAL.pointer.isDown[0]) { 
-		data->boat.target.x = GLOBAL.pointer.x;
-		data->boat.target.y = GLOBAL.pointer.y;
-	}
-	
-	/*
-	 * Thoughts on movement...
-	 * Click to move boat around on screen.
-	 * Boat gets towards last tile on one side, move boat to centre and move camera with it
-	 */
+
 	pointer.x = GLOBAL.pointer.x;
 	pointer.y = GLOBAL.pointer.y;
+	
+	pointerRect.x = floor(pointer.x / 8) * 8;
+	pointerRect.y = floor(pointer.y / 8) * 8;
+	
+	if (1 == GLOBAL.pointer.isDown[0]) { 
+		data->boat.target.x = pointerRect.x;
+		data->boat.target.y = pointerRect.y;
+	}
 	
 	time.x = 15;
 	time.y = 53;
 	
 	fishy_timer_update(&data->time);
 	
-	/*data->boatRect.x = gae_lerp(data->boatRect.x, data->boatDest.x, 0.1);
-	data->boatRect.y = gae_lerp(data->boatRect.y, data->boatDest.y, 0.1);*/
-	
-	/*data->camera.view.x = gae_lerp(data->camera.view.x, data->boatRect.x - 16, 0.1);
-	data->camera.view.y = gae_lerp(data->camera.view.y, data->boatRect.y - 16, 0.1);*/
-	
-	gae_colour_rgba_set_blue(colour);
+	gae_colour_rgba_set_cyan(colour);
 	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->waterTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->waterTex, &data->camera.view, &data->camera.port);
-	/*gae_sprite_sheet_draw(&data->sprites, gae_hashstring_calculate("boat"), &data->boatRect);*/
 	lake_boat_update(&data->boat, data);
+	gae_sprite_sheet_draw(&data->sprites, gae_hashstring_calculate("marker"), &pointerRect);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->ui, 0, &data->uiRect);
 	gae_button_update(&data->shop, &pointer, GLOBAL.pointer.isDown[0]);
 	gae_button_update(&data->cast, &pointer, GLOBAL.pointer.isDown[0]);
 	gae_colour_rgba_set_white(colour);
-	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->waterTex, &colour);
-	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->waterTex, &data->minimap.view, &data->minimap.port);
+	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->minimapTex, &colour);
+	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->minimapTex, &data->minimap.view, &data->minimap.port);
 	fishy_timer_draw(&data->time, time);
 	
 	return 0;

@@ -4,6 +4,10 @@
 
 #define SWING_SPEED 10
 
+/* stupid idea
+ * hold touch to swing rod.. let go to cast.. close to 45o we get, the better
+ */
+
 enum swing
 {	swing_back
 ,	swing_fore
@@ -134,6 +138,9 @@ static int onUpdate(void* userData)
 	fishy_cast_t* data = userData;
 	gae_colour_rgba colour;
 	int buttonDown = 0;
+	gae_point_2d_t start;
+	gae_point_2d_t length;
+	gae_point_2d_t end;
 	
 	if (0 == data->buttonDown && 1 == GLOBAL.pointer.isDown[0]) {
 		data->buttonDown = 1;
@@ -158,10 +165,28 @@ static int onUpdate(void* userData)
 	
 	if (data->backSwing >= 14) data->timer.scale = -SWING_SPEED;
 	else if (data->backSwing <= 0) data->timer.scale = SWING_SPEED;
-	if (data->castRect.x - data->foreSwingPoint.x + data->foreSwing > 27) data->timer.scale = -SWING_SPEED;
-	else if (data->foreSwing < 0) data->timer.scale = SWING_SPEED;
+	if (data->castRect.x - data->foreSwingPoint.x + data->foreSwing > 27) data->timer.scale = -SWING_SPEED * 2;
+	else if (data->foreSwing < 0) data->timer.scale = SWING_SPEED * 2;
 	
 	lockSwing(data, buttonDown);
+	start.x = 21; start.y = 38;
+	length.x = start.x;
+	length.y = start.y - 10;
+	
+	switch (data->swing) {
+		case swing_back: {
+			end = gae_point2d_rotate(&start, gae_deg2rad(-data->backSwing * 6), &length);
+			gae_graphics_context_draw_line(gae_system.graphics.context, &start, &end);
+		};
+		break;
+		case swing_fore: {
+			end = gae_point2d_rotate(&start, gae_deg2rad((-data->lockedBackSwing * 6) + data->foreSwing), &length);
+			gae_graphics_context_draw_line(gae_system.graphics.context, &start, &end);
+		};
+		break;
+		default:
+		break;
+	}
 	
 	return 0;
 }
