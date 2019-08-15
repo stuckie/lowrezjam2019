@@ -2,17 +2,7 @@
 #define _FISHY_TIMER_H_
 
 #include "gae.h"
-
-typedef struct fishy_timer_s {
-	gae_sprite_sheet_t font;
-	
-	int minutes;
-	int seconds;
-
-	gae_hashstring blip;
-	
-	gae_timer_t timer;
-} fishy_timer_t;
+#include "fishy_structs.h"
 
 fishy_timer_t* fishy_timer_init(fishy_timer_t* timer);
 fishy_timer_t* fishy_timer_update(fishy_timer_t* timer);

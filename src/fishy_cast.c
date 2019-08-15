@@ -5,8 +5,10 @@
 #define SWING_SPEED 360
 
 enum swing_state
-{	swing_start
+{	swing_wait
+,	swing_start
 ,	swing_end
+,	swing_cast
 };
 
 typedef struct fishy_cast_s {
@@ -41,17 +43,45 @@ static int onStart(void* userData)
 	data->end.x = 0;
 	data->end.y = 0;
 	
+	data->state = swing_wait;
+	
 	return 0;
 }
 
+#include <stdio.h>
 static int onUpdate(void* userData)
 {
 	fishy_cast_t* data = userData;
 	gae_colour_rgba colour;
 	
-	if (GLOBAL.pointer.isDown[0])
+	if ((GLOBAL.pointer.isDown[0])
+	&& (swing_end != data->state)) {
 		data->angle += data->timer.deltaTime;
-	else {
+		if (data->angle > 360)
+			data->angle -= 360;
+		data->state = swing_start;
+	} else {
+		if (data->state == swing_start) {
+			float angle = gae_rad2deg(gae_point2d_angle_between(&data->start, &data->end));
+			if (angle > 90)
+				data->state = swing_end;
+		}
+	}
+
+	if (data->state == swing_end) {
+		++data->length.x;
+		--data->length.y;
+		
+		if (64 < data->length.x) {
+			gae_state_t reelState;
+			gae_state_t* thisState;
+			fishy_reel_init(&reelState);
+			if (0 != reelState.onStart) (*reelState.onStart)(reelState.userData);
+			thisState = gae_stack_peek(&GLOBAL.stateStack);
+			if (0 != thisState->onStop) (*thisState->onStop)(thisState->userData);
+			gae_stack_replace(&GLOBAL.stateStack, &reelState);
+			return 0;
+		}
 	}
 	
 	gae_timer_update(&data->timer, gae_system.main_clock);

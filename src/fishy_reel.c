@@ -23,7 +23,7 @@ static reel_t* reel_init(reel_t* reel)
 	reel->largeBitId = gae_hashstring_calculate("reelLargeBit");
 	reel->smallBitId = gae_hashstring_calculate("reelSmallBit");
 	
-	reel->reelOrigin.x = 10;
+	reel->reelOrigin.x = 9;
 	reel->reelOrigin.y = 54;
 	
 	reel->largeBit.x = 15.5;
@@ -110,6 +110,8 @@ typedef struct item_s {
 	
 	gae_hashstring fishMarkerId;
 	
+	gae_timer_t aiTimer;
+	
 	enum item_state state;
 } item_t;
 
@@ -122,6 +124,9 @@ item_t* item_init(item_t* item)
 	item->fishMarkerId = gae_hashstring_calculate("marker-left");
 	
 	item->state = ITEM_WAITING;
+	
+	gae_timer_init(&item->aiTimer, gae_system.main_clock);
+	item->aiTimer.currentTime = 0.5F + gae_rand_float(1.0F);
 	
 	return item;
 }
@@ -197,6 +202,34 @@ reel_t* reel_update(reel_t* reel, fishy_reel_t* data)
 	return reel;
 }
 
+item_t* item_update(item_t* item, fishy_reel_t* data)
+{
+	switch (item->state) {
+		case ITEM_WAITING: {
+		};
+		break;
+		case ITEM_BITING: {
+			if (0 >= data->bobber.animTimer.currentTime) {
+				data->bobber.currentBobAnim++;
+				if (data->bobber.currentBobAnim >= 3)
+					data->bobber.currentBobAnim = 0;
+			}
+		};
+		break;
+		case ITEM_FIGHTING: {
+		};
+		break;
+		case ITEM_ESCAPED: {
+		};
+		break;
+		case ITEM_LANDED: {
+		};
+		break;
+	}
+	
+	return item;
+}
+
 bobber_t* bobber_update(bobber_t* bobber, fishy_reel_t* data)
 {
 	gae_point_2d_t linePos;
@@ -211,9 +244,6 @@ bobber_t* bobber_update(bobber_t* bobber, fishy_reel_t* data)
 	gae_sprite_sheet_draw(&data->sprites, bobber->bobberIds[bobber->currentBobAnim], &bobber->rect);
 	if (0 >= bobber->animTimer.currentTime) {
 		bobber->animTimer.currentTime = gae_rand_float(1.0F);
-		bobber->currentBobAnim++;
-		if (bobber->currentBobAnim >= 3)
-			bobber->currentBobAnim = 0;
 		
 		bobber->target.x = bobber->origin.x + gae_rand_float(5.0F);
 		bobber->target.y = bobber->origin.y + gae_rand_float(5.0F);
@@ -257,6 +287,7 @@ static int onUpdate(void* userData)
 	}
 	
 	reel_update(&data->reel, data);
+	item_update(&data->item, data);
 	bobber_update(&data->bobber, data);
 	depthMeter_update(&data->depthMeter, data);
 	

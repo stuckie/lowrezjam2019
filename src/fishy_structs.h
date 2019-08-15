@@ -9,6 +9,17 @@ typedef struct fish_framerate_s {
 	float ticksPerFrame;
 } fish_framerate_t;
 
+typedef struct fishy_timer_s {
+	gae_sprite_sheet_t font;
+	
+	int minutes;
+	int seconds;
+
+	gae_hashstring blip;
+	
+	gae_timer_t timer;
+} fishy_timer_t;
+
 enum fishy_controller_action_state
 {	ACTION_UP
 ,	ACTION_DOWN
@@ -30,6 +41,8 @@ typedef struct fish_global_s {
 	
 	gae_pointer_t pointer;
 	gae_keyboard_t keyboard;
+	
+	fishy_timer_t gameTimer;
 } fish_global_t;
 
 typedef struct fish_def_s {

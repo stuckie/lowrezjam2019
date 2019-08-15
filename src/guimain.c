@@ -62,6 +62,7 @@ static void OnQuit(void* userDatum, gae_event_t* const event)
 
 int main(int argc, char** argv)
 {
+	gae_state_t shop;
 	gae_state_t splash;
 	gae_state_t lake;
 	gae_state_t* current;
@@ -86,8 +87,10 @@ int main(int argc, char** argv)
 	
 	fishy_lake_init(&lake);
 	fishy_splash_init(&splash);
+	fishy_shop_init(&shop);
 	gae_stack_init(&GLOBAL.stateStack, sizeof(gae_state_t));
 	gae_stack_push(&GLOBAL.stateStack, &lake);
+	gae_stack_push(&GLOBAL.stateStack, &shop);
 	gae_stack_push(&GLOBAL.stateStack, &splash);
 	
 	(void)(argc);
