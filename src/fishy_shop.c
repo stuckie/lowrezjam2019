@@ -1,4 +1,5 @@
 #include "fishy_structs.h"
+#include "fishy_timer.h"
 
 #include "gae.h"
 
@@ -18,10 +19,14 @@ static int onStart(void* userData)
 static int onUpdate(void* userData)
 {
 	fishy_shop_t* data = userData;
+	int next = GLOBAL.pointer.isDown[0];
 	
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->pic, 0, 0);
 	
-	return GLOBAL.pointer.isDown[0];
+	if (next)
+		fishy_timer_init(&GLOBAL.time);
+	
+	return next;
 }
 
 static int onStop(void* userData)

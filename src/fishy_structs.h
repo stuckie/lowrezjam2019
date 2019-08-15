@@ -16,6 +16,7 @@ typedef struct fishy_timer_s {
 	int seconds;
 
 	gae_hashstring blip;
+	gae_hashstring back;
 	
 	gae_timer_t timer;
 } fishy_timer_t;
@@ -36,13 +37,15 @@ typedef struct fishy_controller_s {
 typedef struct fish_global_s {
 	gae_graphics_texture_t frameBuffer;
 	gae_sprite_sheet_t sprites;
+	gae_sprite_sheet_t items;
 	fish_framerate_t framerate;
 	gae_stack_t stateStack;
 	
 	gae_pointer_t pointer;
 	gae_keyboard_t keyboard;
 	
-	fishy_timer_t gameTimer;
+	fishy_timer_t time;
+	gae_hashstring itemCatch;
 } fish_global_t;
 
 typedef struct fish_def_s {

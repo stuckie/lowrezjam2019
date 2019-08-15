@@ -3,9 +3,7 @@
 #include <math.h>
 
 fishy_timer_t* fishy_timer_init(fishy_timer_t* timer)
-{
-	gae_json_document_t jsDoc;
-	
+{	
 	timer->minutes = 2;
 	timer->seconds = 0;
 	
@@ -14,11 +12,7 @@ fishy_timer_t* fishy_timer_init(fishy_timer_t* timer)
 	timer->timer.currentTime = 120;
 
 	timer->blip = gae_hashstring_calculate(":");
-	
-	gae_json_document_init(&jsDoc, "data/timer.json");
-	gae_json_document_parse(&jsDoc);
-	gae_sprite_sheet_init(&timer->font, &jsDoc);
-	gae_json_document_destroy(&jsDoc);
+	timer->back = gae_hashstring_calculate("timer");
 	
 	return timer;
 }
@@ -47,15 +41,18 @@ fishy_timer_t* fishy_timer_draw(fishy_timer_t* timer, gae_point_2d_t pos)
 
 	if (0 > timer->timer.currentTime) return timer;
 	
-	gae_sprite_sheet_draw(&timer->font, 48 + minTens, &rect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, timer->back, &rect);
+	rect.x += 2;
+	rect.y += 2;
+	gae_sprite_sheet_draw(&GLOBAL.sprites, 48 + minTens, &rect);
 	rect.x += rect.w + 1;
-	gae_sprite_sheet_draw(&timer->font, 48 + minUnits, &rect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, 48 + minUnits, &rect);
 	rect.x += rect.w;
-	gae_sprite_sheet_draw(&timer->font, timer->blip, &rect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, timer->blip, &rect);
 	rect.x += rect.w;
-	gae_sprite_sheet_draw(&timer->font, 48 + secTens, &rect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, 48 + secTens, &rect);
 	rect.x += rect.w + 1;
-	gae_sprite_sheet_draw(&timer->font, 48 + secUnits, &rect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, 48 + secUnits, &rect);
 	
 	return timer;
 }

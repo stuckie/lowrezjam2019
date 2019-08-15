@@ -1,6 +1,7 @@
 #include "gae.h"
 
 #include "fishy_structs.h"
+#include "fishy_timer.h"
 
 #include <stdlib.h>
 
@@ -138,7 +139,6 @@ typedef struct fishy_reel_s {
 	float angle;
 	float distance;
 	
-	gae_sprite_sheet_t sprites;
 	reel_t reel;
 	bobber_t bobber;
 	depthMeter_t depthMeter;
@@ -148,12 +148,6 @@ typedef struct fishy_reel_s {
 static int onStart(void* userData)
 {
 	fishy_reel_t* data = userData;
-	gae_json_document_t jsDoc;
-	
-	gae_json_document_init(&jsDoc, "data/sprites.json");
-	gae_json_document_parse(&jsDoc);
-	gae_sprite_sheet_init(&data->sprites, &jsDoc);
-	gae_json_document_destroy(&jsDoc);
 	
 	gae_timer_init(&data->timer, gae_system.main_clock);
 	
@@ -192,11 +186,11 @@ reel_t* reel_update(reel_t* reel, fishy_reel_t* data)
 	gae_colour_rgba_set_white(displayColour);
 	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &displayColour);
 	
-	gae_sprite_sheet_draw(&data->sprites, reel->reelId, &reel->reelRect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, reel->reelId, &reel->reelRect);
 	reel->drawRect.x = largePos.x; reel->drawRect.y = largePos.y;
-	gae_sprite_sheet_draw(&data->sprites, reel->largeBitId, &reel->drawRect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, reel->largeBitId, &reel->drawRect);
 	reel->drawRect.x = smallPos.x; reel->drawRect.y = smallPos.y;
-	gae_sprite_sheet_draw(&data->sprites, reel->smallBitId, &reel->drawRect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, reel->smallBitId, &reel->drawRect);
 	
 	
 	return reel;
@@ -241,7 +235,7 @@ bobber_t* bobber_update(bobber_t* bobber, fishy_reel_t* data)
 	bobber->rect.x = bobber->pos.x;
 	bobber->rect.y = bobber->pos.y;
 	
-	gae_sprite_sheet_draw(&data->sprites, bobber->bobberIds[bobber->currentBobAnim], &bobber->rect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, bobber->bobberIds[bobber->currentBobAnim], &bobber->rect);
 	if (0 >= bobber->animTimer.currentTime) {
 		bobber->animTimer.currentTime = gae_rand_float(1.0F);
 		
@@ -257,12 +251,16 @@ bobber_t* bobber_update(bobber_t* bobber, fishy_reel_t* data)
 	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
 	gae_graphics_context_draw_line(gae_system.graphics.context, &bobber->pos, &linePos);
 	
+	(void)(data);
+	
 	return bobber;
 }
 
 depthMeter_t* depthMeter_update(depthMeter_t* depthMeter, fishy_reel_t* data)
 {
-	gae_sprite_sheet_draw(&data->sprites, depthMeter->depthBarId, &depthMeter->barRect);
+	gae_sprite_sheet_draw(&GLOBAL.sprites, depthMeter->depthBarId, &depthMeter->barRect);
+	
+	(void)(data);
 	
 	return depthMeter;
 }
@@ -271,6 +269,7 @@ static int onUpdate(void* userData)
 {
 	fishy_reel_t* data = userData;
 	gae_colour_rgba colour;
+	gae_point_2d_t time;
 	
 	gae_timer_update(&data->timer, gae_system.main_clock);
 	
@@ -294,14 +293,18 @@ static int onUpdate(void* userData)
 	colour.r = 0; colour.g = 179; colour.b = 255; colour.a = 0;
 	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
 	
+	time.x = 0;
+	time.y = 0;
+	
+	fishy_timer_draw(&GLOBAL.time, time);
+	
 	return 0;
 }
 
 static int onStop(void* userData)
 {
 	fishy_reel_t* data = userData;
-	
-	gae_sprite_sheet_destroy(&data->sprites);
+	(void)(data);
 	
 	return 0;
 }

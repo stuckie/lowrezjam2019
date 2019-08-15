@@ -1,6 +1,7 @@
 #include "gae.h"
 
 #include "fishy_structs.h"
+#include "fishy_timer.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -60,6 +61,23 @@ static void OnQuit(void* userDatum, gae_event_t* const event)
 	isRunning = 0;
 }
 
+static void loadSprites()
+{
+	gae_json_document_t jsDoc;
+	
+	gae_json_document_init(&jsDoc, "data/sprites.json");
+	gae_json_document_parse(&jsDoc);
+	gae_sprite_sheet_init(&GLOBAL.sprites, &jsDoc);
+	gae_json_document_destroy(&jsDoc);
+	
+	gae_json_document_init(&jsDoc, "data/items.json");
+	gae_json_document_parse(&jsDoc);
+	gae_sprite_sheet_init(&GLOBAL.items, &jsDoc);
+	gae_json_document_destroy(&jsDoc);
+	
+	GLOBAL.itemCatch = gae_hashstring_calculate("0");
+}
+
 int main(int argc, char** argv)
 {
 	gae_state_t shop;
@@ -85,9 +103,11 @@ int main(int argc, char** argv)
 	gae_system.event_system->onKeyboardEvent = OnKeyboardEvent;
 	gae_system.event_system->onQuit = OnQuit;
 	
+	loadSprites();
+	
 	fishy_lake_init(&lake);
 	fishy_splash_init(&splash);
-	fishy_shop_init(&shop);
+	fishy_land_init(&shop);
 	gae_stack_init(&GLOBAL.stateStack, sizeof(gae_state_t));
 	gae_stack_push(&GLOBAL.stateStack, &lake);
 	gae_stack_push(&GLOBAL.stateStack, &shop);
@@ -106,9 +126,13 @@ int main(int argc, char** argv)
 	current = gae_stack_peek(&GLOBAL.stateStack);
 	if (0 != current)(*current->onStop)(current->userData);
 	
+	gae_sprite_sheet_destroy(&GLOBAL.sprites);
+	gae_sprite_sheet_destroy(&GLOBAL.items);
+	
 	gae_graphics_window_destroy(gae_system.graphics.window);
 	gae_graphics_context_destroy(gae_system.graphics.context);
 	gae_event_system_destroy(gae_system.event_system);
+
 	
 	gae_free(gae_system.event_system);
 	gae_free(gae_system.graphics.window);
@@ -154,6 +178,7 @@ static void main_loop()
 	gae_graphics_context_present(gae_system.graphics.context);
 	
 	gae_timer_update(&GLOBAL.framerate.cap, gae_system.main_clock);
+	fishy_timer_update(&GLOBAL.time);
 	
 #ifndef __EMSCRIPTEN__
 	gae_system_delay(gae_max(0, GLOBAL.framerate.ticksPerFrame - GLOBAL.framerate.cap.currentTime));

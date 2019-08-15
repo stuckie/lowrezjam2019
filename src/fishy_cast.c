@@ -1,4 +1,5 @@
 #include "fishy_structs.h"
+#include "fishy_timer.h"
 
 #include "gae.h"
 
@@ -53,6 +54,10 @@ static int onUpdate(void* userData)
 {
 	fishy_cast_t* data = userData;
 	gae_colour_rgba colour;
+	gae_point_2d_t time;
+	
+	time.x = 0;
+	time.y = 0;
 	
 	if ((GLOBAL.pointer.isDown[0])
 	&& (swing_end != data->state)) {
@@ -92,6 +97,8 @@ static int onUpdate(void* userData)
 	gae_graphics_context_set_draw_colour(gae_system.graphics.context, &colour);
 	data->end = gae_point2d_rotate(&data->start, gae_deg2rad(data->angle), &data->length);
 	gae_graphics_context_draw_line(gae_system.graphics.context, &data->start, &data->end);
+	
+	fishy_timer_draw(&GLOBAL.time, time);
 	
 	return 0;
 }
