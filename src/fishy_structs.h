@@ -46,6 +46,8 @@ typedef struct fish_global_s {
 	
 	fishy_timer_t time;
 	gae_hashstring itemCatch;
+	
+	int trophies[16];
 } fish_global_t;
 
 typedef struct fish_def_s {
@@ -117,5 +119,6 @@ struct gae_state_s* fishy_lake_init(struct gae_state_s* state);
 struct gae_state_s* fishy_cast_init(struct gae_state_s* state);
 struct gae_state_s* fishy_reel_init(struct gae_state_s* state);
 struct gae_state_s* fishy_land_init(struct gae_state_s* state);
+struct gae_state_s* fishy_trophy_init(struct gae_state_s* state);
 
 #endif

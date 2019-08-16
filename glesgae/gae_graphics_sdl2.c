@@ -75,8 +75,10 @@ gae_graphics_context_t* gae_graphics_context_blit_texture(gae_graphics_context_t
 gae_graphics_context_t* gae_graphics_context_blit_texture_params(gae_graphics_context_t* const context, gae_graphics_context_blit_params_t* const params)
 {
 	SDL_Point p;
-	p.x = params->origin->x;
-	p.y = params->origin->y;
+	if (0 != params->origin) {
+		p.x = params->origin->x;
+		p.y = params->origin->y;
+	} else { p.x = p.y = 0; }
 	
 	SDL_RenderCopyEx(context->data, params->texture->data, (SDL_Rect*)(params->srcRect), (SDL_Rect*)(params->dstRect), params->degrees, &p, SDL_FLIP_NONE);
 	

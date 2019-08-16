@@ -64,6 +64,10 @@ static void OnQuit(void* userDatum, gae_event_t* const event)
 static void loadSprites()
 {
 	gae_json_document_t jsDoc;
+	int i;
+	
+	for (i = 0; i < 16; ++i)
+		GLOBAL.trophies[i] = 0;
 	
 	gae_json_document_init(&jsDoc, "data/sprites.json");
 	gae_json_document_parse(&jsDoc);
@@ -75,7 +79,7 @@ static void loadSprites()
 	gae_sprite_sheet_init(&GLOBAL.items, &jsDoc);
 	gae_json_document_destroy(&jsDoc);
 	
-	GLOBAL.itemCatch = gae_hashstring_calculate("0");
+	GLOBAL.itemCatch = gae_hashstring_calculate("-1");
 }
 
 int main(int argc, char** argv)
@@ -107,7 +111,7 @@ int main(int argc, char** argv)
 	
 	fishy_lake_init(&lake);
 	fishy_splash_init(&splash);
-	fishy_land_init(&shop);
+	fishy_shop_init(&shop);
 	gae_stack_init(&GLOBAL.stateStack, sizeof(gae_state_t));
 	gae_stack_push(&GLOBAL.stateStack, &lake);
 	gae_stack_push(&GLOBAL.stateStack, &shop);

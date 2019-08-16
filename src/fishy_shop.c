@@ -16,6 +16,16 @@ static int onStart(void* userData)
 	return 0;
 }
 
+static void initGame()
+{
+	int i;
+	
+	for (i = 0; i < 16; ++i)
+		GLOBAL.trophies[i] = 0;
+	
+	fishy_timer_init(&GLOBAL.time);
+}
+
 static int onUpdate(void* userData)
 {
 	fishy_shop_t* data = userData;
@@ -23,8 +33,7 @@ static int onUpdate(void* userData)
 	
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->pic, 0, 0);
 	
-	if (next)
-		fishy_timer_init(&GLOBAL.time);
+	if (next) initGame();
 	
 	return next;
 }
