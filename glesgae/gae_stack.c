@@ -18,6 +18,8 @@ void* gae_stack_peek(gae_stack_t* stack)
 void* gae_stack_pop(gae_stack_t* stack)
 {
 	void* last = gae_array_last(stack);
+	if (0 == stack->used) return 0;
+	
 	stack->used -= stack->size;
 	if (stack->used > stack->allocated) /* unsigned wrap */
 		stack->used = 0;

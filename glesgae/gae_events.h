@@ -39,6 +39,8 @@ typedef struct gae_pointer_move_event_s {
 } gae_pointer_move_event_t;
 
 typedef struct gae_pointer_button_event_s {
+	unsigned int x;
+	unsigned int y;
 	unsigned int buttonId;
 	unsigned int isDown;
 } gae_pointer_button_event_t;

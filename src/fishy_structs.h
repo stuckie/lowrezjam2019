@@ -3,6 +3,15 @@
 
 #include "gae.h"
 
+typedef struct water_cell_s {
+    int depth;
+    int fish;
+} water_cell_t;
+
+typedef struct water_area_s {
+    gae_grid_t area;
+} water_area_t;
+
 typedef struct fish_framerate_s {
 	gae_timer_t cap;
 	float fps;
@@ -46,6 +55,8 @@ typedef struct fish_global_s {
 	
 	fishy_timer_t time;
 	gae_hashstring itemCatch;
+
+	water_cell_t* tile;
 	
 	int trophies[16];
 } fish_global_t;

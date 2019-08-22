@@ -4,12 +4,12 @@
 
 fishy_timer_t* fishy_timer_init(fishy_timer_t* timer)
 {	
-	timer->minutes = 2;
+	timer->minutes = 0;
 	timer->seconds = 0;
 	
 	gae_timer_init(&timer->timer, gae_system.main_clock);
 	timer->timer.scale = -1;
-	timer->timer.currentTime = 120;
+	timer->timer.currentTime = 2 * 60;
 
 	timer->blip = gae_hashstring_calculate(":");
 	timer->back = gae_hashstring_calculate("timer");
@@ -54,5 +54,13 @@ fishy_timer_t* fishy_timer_draw(fishy_timer_t* timer, gae_point_2d_t pos)
 	rect.x += rect.w + 1;
 	gae_sprite_sheet_draw(&GLOBAL.sprites, 48 + secUnits, &rect);
 	
+	return timer;
+}
+
+fishy_timer_t* fishy_timer_paused(fishy_timer_t* timer)
+{
+	timer->timer.lastTime = gae_system.main_clock->deltaTime;
+	timer->timer.deltaTime = 0;
+
 	return timer;
 }

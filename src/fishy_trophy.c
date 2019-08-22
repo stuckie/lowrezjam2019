@@ -102,6 +102,8 @@ static int onStop(void* userData)
 {
 	fishy_trophy_t* data = userData;
 	(void)(data);
+
+	fishy_timer_paused(&GLOBAL.time);
 	
 	return 0;
 }

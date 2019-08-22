@@ -23,6 +23,9 @@ static void initGame()
 	for (i = 0; i < 16; ++i)
 		GLOBAL.trophies[i] = 0;
 	
+	GLOBAL.itemCatch = gae_hashstring_calculate("-1");
+	GLOBAL.tile = 0;
+	
 	fishy_timer_init(&GLOBAL.time);
 }
 

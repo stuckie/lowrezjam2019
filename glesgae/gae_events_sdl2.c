@@ -1,4 +1,4 @@
-#include "gae_events.h"
+#include "gae.h"
 
 #include "SDL2/SDL.h"
 
@@ -27,7 +27,8 @@ gae_event_system_t* gae_event_system_update(gae_event_system_t* const system)
 					gae_event_t gaeEvent;
 					moveEvent.x = motion->x; 
 					moveEvent.y = motion->y;
-					gaeEvent.type = GAE_EVENT_MOUSE_MOVE; gaeEvent.event = &moveEvent;
+					gaeEvent.type = GAE_EVENT_MOUSE_MOVE;
+					gaeEvent.event = &moveEvent;
 					(*system->onMouseEvent)(system->userDatum, &gaeEvent);
 				}
 			};
@@ -40,7 +41,56 @@ gae_event_system_t* gae_event_system_update(gae_event_system_t* const system)
 					gae_event_t gaeEvent;
 					buttonEvent.buttonId = button->which; 
 					buttonEvent.isDown = button->type == SDL_MOUSEBUTTONDOWN;
-					gaeEvent.type = GAE_EVENT_MOUSE_BUTTON; gaeEvent.event = &buttonEvent;
+					buttonEvent.x = button->x;
+					buttonEvent.y = button->y;
+					gaeEvent.type = GAE_EVENT_MOUSE_BUTTON;
+					gaeEvent.event = &buttonEvent;
+					(*system->onMouseEvent)(system->userDatum, &gaeEvent);
+				}
+			};
+			break;
+			case SDL_FINGERUP: {
+				if (0 != system->onMouseEvent) {
+					gae_pointer_button_event_t buttonEvent;
+					gae_event_t gaeEvent;
+					int width = gae_system.graphics.window->w;
+					int height = gae_system.graphics.window->h;
+					buttonEvent.x = event.tfinger.x * width;
+					buttonEvent.y = event.tfinger.y * height;
+					buttonEvent.buttonId = 0; 
+					buttonEvent.isDown = 0;
+					gaeEvent.type = GAE_EVENT_MOUSE_BUTTON; 
+					gaeEvent.event = &buttonEvent;
+					(*system->onMouseEvent)(system->userDatum, &gaeEvent);
+				}
+			};
+			break;
+			case SDL_FINGERDOWN: {
+				if (0 != system->onMouseEvent) {
+					gae_pointer_button_event_t buttonEvent;
+					gae_event_t gaeEvent;
+					int width = gae_system.graphics.window->w;
+					int height = gae_system.graphics.window->h;
+					buttonEvent.x = event.tfinger.x * width;
+					buttonEvent.y = event.tfinger.y * height;
+					buttonEvent.buttonId = 0;
+					buttonEvent.isDown = 1;
+					gaeEvent.type = GAE_EVENT_MOUSE_BUTTON; 
+					gaeEvent.event = &buttonEvent;
+					(*system->onMouseEvent)(system->userDatum, &gaeEvent);
+				}
+			};
+			break;
+			case SDL_FINGERMOTION: {
+				if (0 != system->onMouseEvent) {
+					gae_pointer_move_event_t moveEvent;
+					gae_event_t gaeEvent;
+					int width = gae_system.graphics.window->w;
+					int height = gae_system.graphics.window->h;
+					moveEvent.x = event.tfinger.x * width;
+					moveEvent.y = event.tfinger.y * height;
+					gaeEvent.type = GAE_EVENT_MOUSE_MOVE;
+					gaeEvent.event = &moveEvent;
 					(*system->onMouseEvent)(system->userDatum, &gaeEvent);
 				}
 			};

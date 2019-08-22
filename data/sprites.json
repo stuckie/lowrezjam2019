@@ -68,7 +68,14 @@
 		{ "reelSmallBit": [ 26, 25, 3, 3 ] },
 
 		{ "cast-meter" : [ 0, 19, 29, 4 ] },
-		{ "depth-meter" : [ 58, 7, 6, 43 ] },
+		{ "depth-meter" : [ 58, 7, 5, 42 ] },
+		
+		{ "water-float1" : [ 33, 39, 12, 3 ] },
+		{ "water-float2" : [ 33, 35, 12, 3 ] },
+		{ "water-float3" : [ 33, 31, 12, 3 ] },
+		
+		{ "line-break" : [ 23, 43, 22, 11] },
+		{ "fish-gone" : [ 46, 26, 11, 22] },
 
 		{ "shop-stat" : [ 0, 24, 25, 5 ] }
 	]

@@ -30,6 +30,8 @@ static void OnMouseEvent(void* userDatum, gae_event_t* event)
 		case GAE_EVENT_MOUSE_BUTTON: {
 			gae_pointer_button_event_t* button = event->event;
 			data->pointer.isDown[button->buttonId] = button->isDown;
+			data->pointer.x = button->x / 8;
+			data->pointer.y = button->y / 8;
 		};
 		break;
 		default:
@@ -78,8 +80,6 @@ static void loadSprites()
 	gae_json_document_parse(&jsDoc);
 	gae_sprite_sheet_init(&GLOBAL.items, &jsDoc);
 	gae_json_document_destroy(&jsDoc);
-	
-	GLOBAL.itemCatch = gae_hashstring_calculate("-1");
 }
 
 int main(int argc, char** argv)
@@ -109,6 +109,7 @@ int main(int argc, char** argv)
 	
 	loadSprites();
 	
+	fishy_timer_init(&GLOBAL.time);
 	fishy_lake_init(&lake);
 	fishy_splash_init(&splash);
 	fishy_shop_init(&shop);
@@ -182,7 +183,24 @@ static void main_loop()
 	gae_graphics_context_present(gae_system.graphics.context);
 	
 	gae_timer_update(&GLOBAL.framerate.cap, gae_system.main_clock);
-	fishy_timer_update(&GLOBAL.time);
+	
+	if (0 >= GLOBAL.time.timer.currentTime) { /* OUT OF TIME */
+		gae_state_t* current = gae_stack_pop(&GLOBAL.stateStack);
+		gae_state_t lake, shop;
+		while (0 != current) {
+			if (0 != current->onStop)(*current->onStop)(current->userData);
+			current = gae_stack_pop(&GLOBAL.stateStack);
+		}
+		
+		fishy_lake_init(&lake);
+		fishy_shop_init(&shop);
+		gae_stack_push(&GLOBAL.stateStack, &lake);
+		gae_stack_push(&GLOBAL.stateStack, &shop);
+
+		(*shop.onStart)(shop.userData);
+
+		GLOBAL.time.timer.currentTime = 1;
+	}
 	
 #ifndef __EMSCRIPTEN__
 	gae_system_delay(gae_max(0, GLOBAL.framerate.ticksPerFrame - GLOBAL.framerate.cap.currentTime));

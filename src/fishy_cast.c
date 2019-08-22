@@ -16,6 +16,7 @@ typedef struct fishy_cast_s {
 	gae_timer_t timer;
 	
 	float angle;
+	float thisAngle;
 	
 	gae_graphics_texture_t ui;
 	
@@ -37,6 +38,7 @@ static int onStart(void* userData)
 	data->timer.scale = SWING_SPEED;
 	
 	data->angle = 0.0F;
+	data->thisAngle = 0.0F;
 	data->start.x = 21;
 	data->start.y = 38;
 	data->length.x = data->start.x + 10;
@@ -65,12 +67,15 @@ static int onUpdate(void* userData)
 		if (data->angle > 360)
 			data->angle -= 360;
 		data->state = swing_start;
+		data->thisAngle += data->timer.deltaTime;
 	} else {
 		if (data->state == swing_start) {
 			float angle = gae_rad2deg(gae_point2d_angle_between(&data->start, &data->end));
-			if (angle > 90)
+			if (data->thisAngle > 90 && angle > 90) {
 				data->state = swing_end;
+			}
 		}
+		data->thisAngle = 0;
 	}
 
 	if (data->state == swing_end) {
@@ -98,6 +103,7 @@ static int onUpdate(void* userData)
 	data->end = gae_point2d_rotate(&data->start, gae_deg2rad(data->angle), &data->length);
 	gae_graphics_context_draw_line(gae_system.graphics.context, &data->start, &data->end);
 	
+	fishy_timer_update(&GLOBAL.time);
 	fishy_timer_draw(&GLOBAL.time, time);
 	
 	return 0;

@@ -78,6 +78,34 @@ static void water_depth_create(gae_grid_t* grid, int holes)
 	gae_free(positions);
 }
 
+static void water_fill_fish(gae_grid_t* grid)
+{
+	int i = 0;
+	int extra = rand() % 20;
+	for (i = 0; i < 16; ++i) {
+		int j = rand() % (grid->columns * grid->rows);
+		gae_grid_cell_t* cell = grid->cells + j;
+		water_cell_t* tile = cell->data;
+		
+		while (-1 != tile->fish) {
+			j = rand() % (grid->columns * grid->rows);
+			cell = grid->cells + j;
+			tile = cell->data;
+		}
+		
+		tile->fish = i;
+	}
+	
+	for (i = 0; i < extra; ++i) {
+		int j = rand() % (grid->columns * grid->rows);
+		gae_grid_cell_t* cell = grid->cells + j;
+		water_cell_t* tile = cell->data;
+		
+		if (-1 == tile->fish)
+			tile->fish = rand() % 16;
+	}
+}
+
 water_area_t* water_area_init(water_area_t* area, unsigned int width, unsigned int height, gae_list_t* fish)
 {
     int i = 0;
@@ -91,11 +119,12 @@ water_area_t* water_area_init(water_area_t* area, unsigned int width, unsigned i
         gae_grid_cell_t* cell = area->area.cells + i;
         water_cell_t* tile = gae_alloc(sizeof(water_cell_t));
         tile->depth = 0;
-        tile->fish = 0;
+        tile->fish = -1;
         cell->data = tile;
     }
 
     water_depth_create(&area->area, height + rand() % width);
+	water_fill_fish(&area->area);
 
     return area;
 }

@@ -5,6 +5,7 @@
 #include "gae.h"
 
 #include <math.h>
+#include <stdio.h>
 
 enum boat_state
 {	BOAT_IDLE
@@ -71,6 +72,22 @@ typedef struct fishy_lake_state_s {
 	int init;
 } fishy_lake_state_t;
 
+static void hasFish(fishy_lake_state_t* data)
+{
+	gae_grid_cell_position_t cellPos;
+	gae_grid_cell_t* cell;
+	water_cell_t* tile;
+	lake_boat_t* boat = &data->boat;
+
+	cellPos.x = boat->pos.x / 8;
+	cellPos.y = boat->pos.y / 8;
+
+	cell = gae_grid_cell_at(&data->waterArea.area, &cellPos);
+	tile = cell->data;
+	GLOBAL.tile = tile;
+	data->cast.state = (-1 != tile->fish ? gae_button_active : gae_button_inactive);
+}
+
 lake_boat_t* lake_boat_update(lake_boat_t* boat, fishy_lake_state_t* data)
 {
 	gae_timer_update(&boat->animTimer, gae_system.main_clock);
@@ -93,7 +110,7 @@ lake_boat_t* lake_boat_update(lake_boat_t* boat, fishy_lake_state_t* data)
 	if (boat->pos.x == boat->target.x && boat->pos.y == boat->target.y) {
 		if (BOAT_MOVING == boat->state) {
 			boat->state = BOAT_IDLE;
-			data->cast.state = gae_button_active;
+			hasFish(data);
 		}
 	} else {
 		boat->state = BOAT_MOVING;
@@ -121,8 +138,11 @@ static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTe
 		
 		hsv.h = 200;
 		hsv.s = 0.0;
-		if (1 == reverse) hsv.v = 1.0F - (float)(tile->depth / 10.0F);
-		else hsv.v = (float)(tile->depth / 10.0F);
+		/*if (1 == reverse) hsv.v = 1.0F - (float)(tile->depth / 10.0F);
+		else hsv.v = (float)(tile->depth / 10.0F);*/
+		
+		if (-1 != tile->fish) hsv.v = 1.0F;
+		else hsv.v = 0.0F;
 		
 		rgba = gae_colour_hsv_to_rgb(hsv);
 		
@@ -134,6 +154,8 @@ static void fillWaterTexture(water_area_t* area, gae_graphics_texture_t* waterTe
 	gae_graphics_texture_fill_from_buffer(waterTex, gae_system.graphics.context, &texBuffer, area->area.columns, area->area.rows, 24);
 	
 	gae_buffer_destroy(&texBuffer);
+	
+	(void)(reverse);
 }
 
 static void setupCameras(fishy_lake_state_t* data)
@@ -159,14 +181,19 @@ static void onCastButton(void* userData)
 	fishy_cast_init(&castState);
 	if (0 != castState.onStart) (*castState.onStart)(castState.userData);
 	gae_stack_push(&GLOBAL.stateStack, &castState);
-	
+
 	(void)(userData);
 }
 
 static void onShopButton(void* userData)
 {
-	fishy_lake_state_t* data = userData;
-	data->quit = 1;
+	gae_state_t newState;
+	
+	fishy_trophy_init(&newState);
+	if (0 != newState.onStart) (*newState.onStart)(newState.userData);
+	gae_stack_push(&GLOBAL.stateStack, &newState);
+	
+	(void)(userData);
 }
 
 static void makeButton(gae_button_t* button, const char* jsonDef, int x, int y, gae_button_callback_t onReleased, void* userData)
@@ -185,11 +212,14 @@ static int onStart(void* userData)
 	
 	data->buttonDown = GLOBAL.pointer.isDown[0];
 	
-	if (data->init) return 0;
+	if (data->init) {
+		fillWaterTexture(&data->waterArea, &data->minimapTex, 0);
+		hasFish(data);
+		return 0;
+	}
 	
 	water_area_init(&data->waterArea, 8, 6, 0);
 	fillWaterTexture(&data->waterArea, &data->minimapTex, 0);
-	water_area_destroy(&data->waterArea);
 	
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/lake_ui.bmp", &data->ui);
 	
@@ -207,6 +237,8 @@ static int onStart(void* userData)
 	
 	data->quit = 0;
 	data->init = 1;
+	
+	hasFish(data);
 	
 	return 0;
 }
@@ -260,7 +292,6 @@ static int onUpdate(void* userData)
 	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->minimapTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->minimapTex, &data->minimap.view, &data->minimap.port);
 	draw_minimap_point(&data->boat, data->minimap.port);
-	fishy_timer_draw(&GLOBAL.time, time);
 	
 	if (1 == buttonDown) {
 		if ((8 > pointer.x / 8)
@@ -272,6 +303,9 @@ static int onUpdate(void* userData)
 	
 	data->buttonDown = GLOBAL.pointer.isDown[0];
 	
+	fishy_timer_update(&GLOBAL.time);
+	fishy_timer_draw(&GLOBAL.time, time);
+	
 	return 0;
 }
 
@@ -279,7 +313,10 @@ static int onStop(void* userData)
 {
 	fishy_lake_state_t* data = userData;
 	
+	water_area_destroy(&data->waterArea);
 	gae_graphics_texture_destroy(&data->ui);
+	gae_graphics_texture_destroy(&data->waterTex);
+	gae_graphics_texture_destroy(&data->minimapTex);
 	
 	return 0;
 }

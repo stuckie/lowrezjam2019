@@ -74,7 +74,8 @@ gae_rect_t* gae_sprite_sheet_get_rect(gae_sprite_sheet_t* const sheet, gae_hashs
 gae_sprite_sheet_t* gae_sprite_sheet_draw(gae_sprite_sheet_t* const sheet, gae_hashstring sprite, gae_rect_t* const pos)
 {
 	gae_rect_t* drawRect = gae_map_get(&sheet->data, &sprite);
-	
+	if (0 == drawRect) return sheet;
+
 	pos->w = drawRect->w;
 	pos->h = drawRect->h;
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &sheet->texture, drawRect, pos);

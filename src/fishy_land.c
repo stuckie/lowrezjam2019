@@ -18,6 +18,9 @@ int value;
 static int onStart(void* userData)
 {
 	fishy_land_t* data = userData;
+	gae_colour_rgba colour;
+	gae_colour_rgba_set_white(colour);
+	gae_graphics_context_texture_colour(gae_system.graphics.context, &GLOBAL.items.texture, &colour);
 	
 	data->buttonDown = GLOBAL.pointer.isDown[0];
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/star.bmp", &data->star);
@@ -78,22 +81,17 @@ static int onUpdate(void* userData)
 	gae_sprite_sheet_draw(&GLOBAL.items, GLOBAL.itemCatch, &draw);
 	
 	data->buttonDown = GLOBAL.pointer.isDown[0];
-	
-	if (next) {
-		char t[12];
-		++value; if (value > 15) value = 0;
-		sprintf(t, "%d", value); 
-		GLOBAL.itemCatch = gae_hashstring_calculate(t);
-	}
-	
-	return 0;
+
+	return next;
 }
 
 static int onStop(void* userData)
 {
 	fishy_land_t* data = userData;
 	
+	GLOBAL.tile->fish = -1;
 	gae_graphics_texture_destroy(&data->star);
+	fishy_timer_paused(&GLOBAL.time);
 	
 	return 0;
 }
