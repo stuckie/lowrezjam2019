@@ -8,43 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		903D0F22232D2500009045C0 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903D0F21232D2500009045C0 /* SDL2.framework */; };
-		903D0F32232D25AD009045C0 /* fishy_shop.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F24232D25AD009045C0 /* fishy_shop.c */; };
-		903D0F33232D25AD009045C0 /* fishy_area.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F25232D25AD009045C0 /* fishy_area.c */; };
-		903D0F34232D25AD009045C0 /* fishy_reel.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F26232D25AD009045C0 /* fishy_reel.c */; };
-		903D0F35232D25AD009045C0 /* fishy_trophy.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F27232D25AD009045C0 /* fishy_trophy.c */; };
-		903D0F36232D25AD009045C0 /* fishy_splash.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F28232D25AD009045C0 /* fishy_splash.c */; };
-		903D0F37232D25AD009045C0 /* fishy_land.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F29232D25AD009045C0 /* fishy_land.c */; };
-		903D0F38232D25AD009045C0 /* fishy_cast.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F2A232D25AD009045C0 /* fishy_cast.c */; };
-		903D0F39232D25AD009045C0 /* fishy_lake.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F2C232D25AD009045C0 /* fishy_lake.c */; };
-		903D0F3A232D25AD009045C0 /* fishy_timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F2F232D25AD009045C0 /* fishy_timer.c */; };
-		903D0F3B232D25AD009045C0 /* guimain.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F30232D25AD009045C0 /* guimain.c */; };
-		903D0F75232D25D6009045C0 /* gae_sprite.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F3D232D25D2009045C0 /* gae_sprite.c */; };
-		903D0F76232D25D6009045C0 /* gae_timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F3E232D25D2009045C0 /* gae_timer.c */; };
-		903D0F77232D25D6009045C0 /* gae_grid.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F40232D25D2009045C0 /* gae_grid.c */; };
-		903D0F78232D25D6009045C0 /* gae_system_sdl2.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F41232D25D2009045C0 /* gae_system_sdl2.c */; };
-		903D0F79232D25D6009045C0 /* gae_list.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F45232D25D2009045C0 /* gae_list.c */; };
-		903D0F7A232D25D6009045C0 /* gae_button.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F46232D25D2009045C0 /* gae_button.c */; };
-		903D0F7B232D25D6009045C0 /* gae_array.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F47232D25D2009045C0 /* gae_array.c */; };
-		903D0F7C232D25D6009045C0 /* gae_stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F48232D25D2009045C0 /* gae_stack.c */; };
-		903D0F7D232D25D6009045C0 /* gae_dlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F4F232D25D3009045C0 /* gae_dlist.c */; };
-		903D0F7E232D25D6009045C0 /* gae_point.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F51232D25D3009045C0 /* gae_point.c */; };
-		903D0F7F232D25D6009045C0 /* gae_file.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F52232D25D3009045C0 /* gae_file.c */; };
-		903D0F80232D25D6009045C0 /* gae_graphics_sdl2.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F53232D25D3009045C0 /* gae_graphics_sdl2.c */; };
-		903D0F81232D25D6009045C0 /* gae_font.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F54232D25D3009045C0 /* gae_font.c */; };
-		903D0F82232D25D6009045C0 /* gae_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F55232D25D3009045C0 /* gae_manager.c */; };
-		903D0F83232D25D6009045C0 /* gae_clock_linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F5B232D25D4009045C0 /* gae_clock_linux.c */; };
-		903D0F84232D25D6009045C0 /* gae_nineslice.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F5D232D25D4009045C0 /* gae_nineslice.c */; };
-		903D0F85232D25D6009045C0 /* gae_js.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F5F232D25D4009045C0 /* gae_js.c */; };
-		903D0F86232D25D6009045C0 /* gae_state.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F62232D25D4009045C0 /* gae_state.c */; };
-		903D0F87232D25D6009045C0 /* gae_events_sdl2.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F63232D25D4009045C0 /* gae_events_sdl2.c */; };
-		903D0F88232D25D6009045C0 /* gae_memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F64232D25D4009045C0 /* gae_memory.c */; };
-		903D0F89232D25D6009045C0 /* gae_sprite_sheet.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F68232D25D5009045C0 /* gae_sprite_sheet.c */; };
-		903D0F8A232D25D6009045C0 /* gae_colour.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F6C232D25D5009045C0 /* gae_colour.c */; };
-		903D0F8B232D25D6009045C0 /* gae_hashstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F6F232D25D5009045C0 /* gae_hashstring.c */; };
-		903D0F8C232D25D6009045C0 /* gae_camera.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F72232D25D5009045C0 /* gae_camera.c */; };
-		903D0F8D232D25D6009045C0 /* gae_buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F73232D25D5009045C0 /* gae_buffer.c */; };
-		903D0F8E232D25D6009045C0 /* gae_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F74232D25D6009045C0 /* gae_map.c */; };
-		903D0F90232D2606009045C0 /* gae_system.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0F8F232D2606009045C0 /* gae_system.c */; };
+		903D1025232D297B009045C0 /* gae_nineslice.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FEF232D2978009045C0 /* gae_nineslice.c */; };
+		903D1026232D297B009045C0 /* gae_point.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FF3232D2978009045C0 /* gae_point.c */; };
+		903D1027232D297B009045C0 /* gae_array.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FF4232D2978009045C0 /* gae_array.c */; };
+		903D1028232D297B009045C0 /* gae_dlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FF5232D2978009045C0 /* gae_dlist.c */; };
+		903D1029232D297B009045C0 /* gae_sprite.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FF6232D2978009045C0 /* gae_sprite.c */; };
+		903D102A232D297B009045C0 /* gae_hashstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FF7232D2978009045C0 /* gae_hashstring.c */; };
+		903D102B232D297B009045C0 /* gae_timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FFC232D2978009045C0 /* gae_timer.c */; };
+		903D102C232D297B009045C0 /* gae_font.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FFD232D2978009045C0 /* gae_font.c */; };
+		903D102D232D297B009045C0 /* gae_list.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D0FFF232D2978009045C0 /* gae_list.c */; };
+		903D102E232D297B009045C0 /* gae_clock_linux.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1004232D2979009045C0 /* gae_clock_linux.c */; };
+		903D102F232D297B009045C0 /* gae_memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1005232D2979009045C0 /* gae_memory.c */; };
+		903D1030232D297B009045C0 /* gae_buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1006232D2979009045C0 /* gae_buffer.c */; };
+		903D1031232D297B009045C0 /* gae_file.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1007232D2979009045C0 /* gae_file.c */; };
+		903D1032232D297B009045C0 /* gae_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1008232D2979009045C0 /* gae_manager.c */; };
+		903D1033232D297B009045C0 /* gae_camera.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1009232D2979009045C0 /* gae_camera.c */; };
+		903D1034232D297B009045C0 /* gae_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D100B232D2979009045C0 /* gae_map.c */; };
+		903D1035232D297B009045C0 /* gae_system_sdl2.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D100D232D2979009045C0 /* gae_system_sdl2.c */; };
+		903D1036232D297B009045C0 /* gae_graphics_sdl2.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D100E232D2979009045C0 /* gae_graphics_sdl2.c */; };
+		903D1037232D297B009045C0 /* gae_grid.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1010232D2979009045C0 /* gae_grid.c */; };
+		903D1038232D297B009045C0 /* gae_system.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1012232D297A009045C0 /* gae_system.c */; };
+		903D1039232D297B009045C0 /* gae_state.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1017232D297A009045C0 /* gae_state.c */; };
+		903D103A232D297B009045C0 /* gae_colour.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D101B232D297A009045C0 /* gae_colour.c */; };
+		903D103B232D297B009045C0 /* gae_events_sdl2.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D101C232D297A009045C0 /* gae_events_sdl2.c */; };
+		903D103C232D297B009045C0 /* gae_js.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D101D232D297A009045C0 /* gae_js.c */; };
+		903D103D232D297B009045C0 /* gae_button.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1020232D297B009045C0 /* gae_button.c */; };
+		903D103E232D297B009045C0 /* gae_sprite_sheet.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1023232D297B009045C0 /* gae_sprite_sheet.c */; };
+		903D103F232D297B009045C0 /* gae_stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1024232D297B009045C0 /* gae_stack.c */; };
+		903D104E232D2990009045C0 /* fishy_shop.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1040232D298F009045C0 /* fishy_shop.c */; };
+		903D104F232D2990009045C0 /* fishy_lake.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1042232D298F009045C0 /* fishy_lake.c */; };
+		903D1050232D2990009045C0 /* fishy_reel.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1043232D298F009045C0 /* fishy_reel.c */; };
+		903D1051232D2990009045C0 /* fishy_trophy.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1046232D298F009045C0 /* fishy_trophy.c */; };
+		903D1052232D2990009045C0 /* fishy_splash.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1047232D298F009045C0 /* fishy_splash.c */; };
+		903D1053232D2990009045C0 /* fishy_cast.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1048232D298F009045C0 /* fishy_cast.c */; };
+		903D1054232D2990009045C0 /* fishy_land.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D1049232D298F009045C0 /* fishy_land.c */; };
+		903D1055232D2990009045C0 /* fishy_area.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D104A232D298F009045C0 /* fishy_area.c */; };
+		903D1056232D2990009045C0 /* fishy_timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D104B232D298F009045C0 /* fishy_timer.c */; };
+		903D1057232D2990009045C0 /* guimain.c in Sources */ = {isa = PBXBuildFile; fileRef = 903D104D232D298F009045C0 /* guimain.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,77 +62,77 @@
 /* Begin PBXFileReference section */
 		903D0F14232D24CE009045C0 /* lowrezfishn */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = lowrezfishn; sourceTree = BUILT_PRODUCTS_DIR; };
 		903D0F21232D2500009045C0 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		903D0F24232D25AD009045C0 /* fishy_shop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_shop.c; path = ../../src/fishy_shop.c; sourceTree = "<group>"; };
-		903D0F25232D25AD009045C0 /* fishy_area.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_area.c; path = ../../src/fishy_area.c; sourceTree = "<group>"; };
-		903D0F26232D25AD009045C0 /* fishy_reel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_reel.c; path = ../../src/fishy_reel.c; sourceTree = "<group>"; };
-		903D0F27232D25AD009045C0 /* fishy_trophy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_trophy.c; path = ../../src/fishy_trophy.c; sourceTree = "<group>"; };
-		903D0F28232D25AD009045C0 /* fishy_splash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_splash.c; path = ../../src/fishy_splash.c; sourceTree = "<group>"; };
-		903D0F29232D25AD009045C0 /* fishy_land.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_land.c; path = ../../src/fishy_land.c; sourceTree = "<group>"; };
-		903D0F2A232D25AD009045C0 /* fishy_cast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_cast.c; path = ../../src/fishy_cast.c; sourceTree = "<group>"; };
-		903D0F2B232D25AD009045C0 /* fishy_structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_structs.h; path = ../../src/fishy_structs.h; sourceTree = "<group>"; };
-		903D0F2C232D25AD009045C0 /* fishy_lake.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_lake.c; path = ../../src/fishy_lake.c; sourceTree = "<group>"; };
-		903D0F2D232D25AD009045C0 /* fishy_area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_area.h; path = ../../src/fishy_area.h; sourceTree = "<group>"; };
-		903D0F2E232D25AD009045C0 /* fishy_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_timer.h; path = ../../src/fishy_timer.h; sourceTree = "<group>"; };
-		903D0F2F232D25AD009045C0 /* fishy_timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_timer.c; path = ../../src/fishy_timer.c; sourceTree = "<group>"; };
-		903D0F30232D25AD009045C0 /* guimain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = guimain.c; path = ../../src/guimain.c; sourceTree = "<group>"; };
-		903D0F31232D25AD009045C0 /* fishy_menu_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_menu_main.h; path = ../../src/fishy_menu_main.h; sourceTree = "<group>"; };
-		903D0F3D232D25D2009045C0 /* gae_sprite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_sprite.c; path = ../../glesgae/gae_sprite.c; sourceTree = "<group>"; };
-		903D0F3E232D25D2009045C0 /* gae_timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_timer.c; path = ../../glesgae/gae_timer.c; sourceTree = "<group>"; };
-		903D0F3F232D25D2009045C0 /* gae.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae.h; path = ../../glesgae/gae.h; sourceTree = "<group>"; };
-		903D0F40232D25D2009045C0 /* gae_grid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_grid.c; path = ../../glesgae/gae_grid.c; sourceTree = "<group>"; };
-		903D0F41232D25D2009045C0 /* gae_system_sdl2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_system_sdl2.c; path = ../../glesgae/gae_system_sdl2.c; sourceTree = "<group>"; };
-		903D0F42232D25D2009045C0 /* gae_colour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_colour.h; path = ../../glesgae/gae_colour.h; sourceTree = "<group>"; };
-		903D0F43232D25D2009045C0 /* gae_state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_state.h; path = ../../glesgae/gae_state.h; sourceTree = "<group>"; };
-		903D0F44232D25D2009045C0 /* gae_button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_button.h; path = ../../glesgae/gae_button.h; sourceTree = "<group>"; };
-		903D0F45232D25D2009045C0 /* gae_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_list.c; path = ../../glesgae/gae_list.c; sourceTree = "<group>"; };
-		903D0F46232D25D2009045C0 /* gae_button.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_button.c; path = ../../glesgae/gae_button.c; sourceTree = "<group>"; };
-		903D0F47232D25D2009045C0 /* gae_array.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_array.c; path = ../../glesgae/gae_array.c; sourceTree = "<group>"; };
-		903D0F48232D25D2009045C0 /* gae_stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_stack.c; path = ../../glesgae/gae_stack.c; sourceTree = "<group>"; };
-		903D0F49232D25D3009045C0 /* gae_sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_sprite.h; path = ../../glesgae/gae_sprite.h; sourceTree = "<group>"; };
-		903D0F4A232D25D3009045C0 /* gae_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_list.h; path = ../../glesgae/gae_list.h; sourceTree = "<group>"; };
-		903D0F4B232D25D3009045C0 /* gae_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_stack.h; path = ../../glesgae/gae_stack.h; sourceTree = "<group>"; };
-		903D0F4C232D25D3009045C0 /* gae_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_timer.h; path = ../../glesgae/gae_timer.h; sourceTree = "<group>"; };
-		903D0F4D232D25D3009045C0 /* gae_graphics_sdl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_graphics_sdl2.h; path = ../../glesgae/gae_graphics_sdl2.h; sourceTree = "<group>"; };
-		903D0F4E232D25D3009045C0 /* gae_nineslice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_nineslice.h; path = ../../glesgae/gae_nineslice.h; sourceTree = "<group>"; };
-		903D0F4F232D25D3009045C0 /* gae_dlist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_dlist.c; path = ../../glesgae/gae_dlist.c; sourceTree = "<group>"; };
-		903D0F50232D25D3009045C0 /* gae_dlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_dlist.h; path = ../../glesgae/gae_dlist.h; sourceTree = "<group>"; };
-		903D0F51232D25D3009045C0 /* gae_point.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_point.c; path = ../../glesgae/gae_point.c; sourceTree = "<group>"; };
-		903D0F52232D25D3009045C0 /* gae_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_file.c; path = ../../glesgae/gae_file.c; sourceTree = "<group>"; };
-		903D0F53232D25D3009045C0 /* gae_graphics_sdl2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_graphics_sdl2.c; path = ../../glesgae/gae_graphics_sdl2.c; sourceTree = "<group>"; };
-		903D0F54232D25D3009045C0 /* gae_font.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_font.c; path = ../../glesgae/gae_font.c; sourceTree = "<group>"; };
-		903D0F55232D25D3009045C0 /* gae_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_manager.c; path = ../../glesgae/gae_manager.c; sourceTree = "<group>"; };
-		903D0F56232D25D3009045C0 /* gae_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_system.h; path = ../../glesgae/gae_system.h; sourceTree = "<group>"; };
-		903D0F57232D25D3009045C0 /* gae_memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_memory.h; path = ../../glesgae/gae_memory.h; sourceTree = "<group>"; };
-		903D0F58232D25D3009045C0 /* gae_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_types.h; path = ../../glesgae/gae_types.h; sourceTree = "<group>"; };
-		903D0F59232D25D4009045C0 /* gae_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_array.h; path = ../../glesgae/gae_array.h; sourceTree = "<group>"; };
-		903D0F5A232D25D4009045C0 /* gae_font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_font.h; path = ../../glesgae/gae_font.h; sourceTree = "<group>"; };
-		903D0F5B232D25D4009045C0 /* gae_clock_linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_clock_linux.c; path = ../../glesgae/gae_clock_linux.c; sourceTree = "<group>"; };
-		903D0F5C232D25D4009045C0 /* gae_graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_graphics.h; path = ../../glesgae/gae_graphics.h; sourceTree = "<group>"; };
-		903D0F5D232D25D4009045C0 /* gae_nineslice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_nineslice.c; path = ../../glesgae/gae_nineslice.c; sourceTree = "<group>"; };
-		903D0F5E232D25D4009045C0 /* gae_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_rect.h; path = ../../glesgae/gae_rect.h; sourceTree = "<group>"; };
-		903D0F5F232D25D4009045C0 /* gae_js.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_js.c; path = ../../glesgae/gae_js.c; sourceTree = "<group>"; };
-		903D0F60232D25D4009045C0 /* gae_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_map.h; path = ../../glesgae/gae_map.h; sourceTree = "<group>"; };
-		903D0F61232D25D4009045C0 /* gae_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_buffer.h; path = ../../glesgae/gae_buffer.h; sourceTree = "<group>"; };
-		903D0F62232D25D4009045C0 /* gae_state.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_state.c; path = ../../glesgae/gae_state.c; sourceTree = "<group>"; };
-		903D0F63232D25D4009045C0 /* gae_events_sdl2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_events_sdl2.c; path = ../../glesgae/gae_events_sdl2.c; sourceTree = "<group>"; };
-		903D0F64232D25D4009045C0 /* gae_memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_memory.c; path = ../../glesgae/gae_memory.c; sourceTree = "<group>"; };
-		903D0F65232D25D4009045C0 /* gae_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_file.h; path = ../../glesgae/gae_file.h; sourceTree = "<group>"; };
-		903D0F66232D25D4009045C0 /* gae_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_manager.h; path = ../../glesgae/gae_manager.h; sourceTree = "<group>"; };
-		903D0F67232D25D5009045C0 /* gae_js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_js.h; path = ../../glesgae/gae_js.h; sourceTree = "<group>"; };
-		903D0F68232D25D5009045C0 /* gae_sprite_sheet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_sprite_sheet.c; path = ../../glesgae/gae_sprite_sheet.c; sourceTree = "<group>"; };
-		903D0F69232D25D5009045C0 /* gae_sprite_sheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_sprite_sheet.h; path = ../../glesgae/gae_sprite_sheet.h; sourceTree = "<group>"; };
-		903D0F6A232D25D5009045C0 /* gae_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_grid.h; path = ../../glesgae/gae_grid.h; sourceTree = "<group>"; };
-		903D0F6B232D25D5009045C0 /* gae_camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_camera.h; path = ../../glesgae/gae_camera.h; sourceTree = "<group>"; };
-		903D0F6C232D25D5009045C0 /* gae_colour.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_colour.c; path = ../../glesgae/gae_colour.c; sourceTree = "<group>"; };
-		903D0F6D232D25D5009045C0 /* gae_clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_clock.h; path = ../../glesgae/gae_clock.h; sourceTree = "<group>"; };
-		903D0F6E232D25D5009045C0 /* gae_hashstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_hashstring.h; path = ../../glesgae/gae_hashstring.h; sourceTree = "<group>"; };
-		903D0F6F232D25D5009045C0 /* gae_hashstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_hashstring.c; path = ../../glesgae/gae_hashstring.c; sourceTree = "<group>"; };
-		903D0F70232D25D5009045C0 /* gae_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_events.h; path = ../../glesgae/gae_events.h; sourceTree = "<group>"; };
-		903D0F71232D25D5009045C0 /* gae_point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_point.h; path = ../../glesgae/gae_point.h; sourceTree = "<group>"; };
-		903D0F72232D25D5009045C0 /* gae_camera.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_camera.c; path = ../../glesgae/gae_camera.c; sourceTree = "<group>"; };
-		903D0F73232D25D5009045C0 /* gae_buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_buffer.c; path = ../../glesgae/gae_buffer.c; sourceTree = "<group>"; };
-		903D0F74232D25D6009045C0 /* gae_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_map.c; path = ../../glesgae/gae_map.c; sourceTree = "<group>"; };
-		903D0F8F232D2606009045C0 /* gae_system.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = gae_system.c; path = ../../glesgae/gae_system.c; sourceTree = "<group>"; };
+		903D0FEC232D2977009045C0 /* gae_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_types.h; path = glesgae/gae_types.h; sourceTree = SOURCE_ROOT; };
+		903D0FED232D2977009045C0 /* gae_camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_camera.h; path = glesgae/gae_camera.h; sourceTree = SOURCE_ROOT; };
+		903D0FEE232D2977009045C0 /* gae_sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_sprite.h; path = glesgae/gae_sprite.h; sourceTree = SOURCE_ROOT; };
+		903D0FEF232D2978009045C0 /* gae_nineslice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_nineslice.c; path = glesgae/gae_nineslice.c; sourceTree = SOURCE_ROOT; };
+		903D0FF0232D2978009045C0 /* gae_sprite_sheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_sprite_sheet.h; path = glesgae/gae_sprite_sheet.h; sourceTree = SOURCE_ROOT; };
+		903D0FF1232D2978009045C0 /* gae_clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_clock.h; path = glesgae/gae_clock.h; sourceTree = SOURCE_ROOT; };
+		903D0FF2232D2978009045C0 /* gae_state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_state.h; path = glesgae/gae_state.h; sourceTree = SOURCE_ROOT; };
+		903D0FF3232D2978009045C0 /* gae_point.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_point.c; path = glesgae/gae_point.c; sourceTree = SOURCE_ROOT; };
+		903D0FF4232D2978009045C0 /* gae_array.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_array.c; path = glesgae/gae_array.c; sourceTree = SOURCE_ROOT; };
+		903D0FF5232D2978009045C0 /* gae_dlist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_dlist.c; path = glesgae/gae_dlist.c; sourceTree = SOURCE_ROOT; };
+		903D0FF6232D2978009045C0 /* gae_sprite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_sprite.c; path = glesgae/gae_sprite.c; sourceTree = SOURCE_ROOT; };
+		903D0FF7232D2978009045C0 /* gae_hashstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_hashstring.c; path = glesgae/gae_hashstring.c; sourceTree = SOURCE_ROOT; };
+		903D0FF8232D2978009045C0 /* gae_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_array.h; path = glesgae/gae_array.h; sourceTree = SOURCE_ROOT; };
+		903D0FF9232D2978009045C0 /* gae_graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_graphics.h; path = glesgae/gae_graphics.h; sourceTree = SOURCE_ROOT; };
+		903D0FFA232D2978009045C0 /* gae_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_list.h; path = glesgae/gae_list.h; sourceTree = SOURCE_ROOT; };
+		903D0FFB232D2978009045C0 /* gae_file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_file.h; path = glesgae/gae_file.h; sourceTree = SOURCE_ROOT; };
+		903D0FFC232D2978009045C0 /* gae_timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_timer.c; path = glesgae/gae_timer.c; sourceTree = SOURCE_ROOT; };
+		903D0FFD232D2978009045C0 /* gae_font.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_font.c; path = glesgae/gae_font.c; sourceTree = SOURCE_ROOT; };
+		903D0FFE232D2978009045C0 /* gae_hashstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_hashstring.h; path = glesgae/gae_hashstring.h; sourceTree = SOURCE_ROOT; };
+		903D0FFF232D2978009045C0 /* gae_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_list.c; path = glesgae/gae_list.c; sourceTree = SOURCE_ROOT; };
+		903D1000232D2978009045C0 /* gae_graphics_sdl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_graphics_sdl2.h; path = glesgae/gae_graphics_sdl2.h; sourceTree = SOURCE_ROOT; };
+		903D1001232D2978009045C0 /* gae_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_events.h; path = glesgae/gae_events.h; sourceTree = SOURCE_ROOT; };
+		903D1002232D2978009045C0 /* gae_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_buffer.h; path = glesgae/gae_buffer.h; sourceTree = SOURCE_ROOT; };
+		903D1003232D2979009045C0 /* gae_button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_button.h; path = glesgae/gae_button.h; sourceTree = SOURCE_ROOT; };
+		903D1004232D2979009045C0 /* gae_clock_linux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_clock_linux.c; path = glesgae/gae_clock_linux.c; sourceTree = SOURCE_ROOT; };
+		903D1005232D2979009045C0 /* gae_memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_memory.c; path = glesgae/gae_memory.c; sourceTree = SOURCE_ROOT; };
+		903D1006232D2979009045C0 /* gae_buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_buffer.c; path = glesgae/gae_buffer.c; sourceTree = SOURCE_ROOT; };
+		903D1007232D2979009045C0 /* gae_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_file.c; path = glesgae/gae_file.c; sourceTree = SOURCE_ROOT; };
+		903D1008232D2979009045C0 /* gae_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_manager.c; path = glesgae/gae_manager.c; sourceTree = SOURCE_ROOT; };
+		903D1009232D2979009045C0 /* gae_camera.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_camera.c; path = glesgae/gae_camera.c; sourceTree = SOURCE_ROOT; };
+		903D100A232D2979009045C0 /* gae_rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_rect.h; path = glesgae/gae_rect.h; sourceTree = SOURCE_ROOT; };
+		903D100B232D2979009045C0 /* gae_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_map.c; path = glesgae/gae_map.c; sourceTree = SOURCE_ROOT; };
+		903D100C232D2979009045C0 /* gae_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_map.h; path = glesgae/gae_map.h; sourceTree = SOURCE_ROOT; };
+		903D100D232D2979009045C0 /* gae_system_sdl2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_system_sdl2.c; path = glesgae/gae_system_sdl2.c; sourceTree = SOURCE_ROOT; };
+		903D100E232D2979009045C0 /* gae_graphics_sdl2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_graphics_sdl2.c; path = glesgae/gae_graphics_sdl2.c; sourceTree = SOURCE_ROOT; };
+		903D100F232D2979009045C0 /* gae.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae.h; path = glesgae/gae.h; sourceTree = SOURCE_ROOT; };
+		903D1010232D2979009045C0 /* gae_grid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_grid.c; path = glesgae/gae_grid.c; sourceTree = SOURCE_ROOT; };
+		903D1011232D297A009045C0 /* gae_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_manager.h; path = glesgae/gae_manager.h; sourceTree = SOURCE_ROOT; };
+		903D1012232D297A009045C0 /* gae_system.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_system.c; path = glesgae/gae_system.c; sourceTree = SOURCE_ROOT; };
+		903D1013232D297A009045C0 /* gae_grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_grid.h; path = glesgae/gae_grid.h; sourceTree = SOURCE_ROOT; };
+		903D1014232D297A009045C0 /* gae_nineslice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_nineslice.h; path = glesgae/gae_nineslice.h; sourceTree = SOURCE_ROOT; };
+		903D1015232D297A009045C0 /* gae_font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_font.h; path = glesgae/gae_font.h; sourceTree = SOURCE_ROOT; };
+		903D1016232D297A009045C0 /* gae_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_stack.h; path = glesgae/gae_stack.h; sourceTree = SOURCE_ROOT; };
+		903D1017232D297A009045C0 /* gae_state.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_state.c; path = glesgae/gae_state.c; sourceTree = SOURCE_ROOT; };
+		903D1018232D297A009045C0 /* gae_colour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_colour.h; path = glesgae/gae_colour.h; sourceTree = SOURCE_ROOT; };
+		903D1019232D297A009045C0 /* gae_dlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_dlist.h; path = glesgae/gae_dlist.h; sourceTree = SOURCE_ROOT; };
+		903D101A232D297A009045C0 /* gae_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_timer.h; path = glesgae/gae_timer.h; sourceTree = SOURCE_ROOT; };
+		903D101B232D297A009045C0 /* gae_colour.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_colour.c; path = glesgae/gae_colour.c; sourceTree = SOURCE_ROOT; };
+		903D101C232D297A009045C0 /* gae_events_sdl2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_events_sdl2.c; path = glesgae/gae_events_sdl2.c; sourceTree = SOURCE_ROOT; };
+		903D101D232D297A009045C0 /* gae_js.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_js.c; path = glesgae/gae_js.c; sourceTree = SOURCE_ROOT; };
+		903D101E232D297B009045C0 /* gae_memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_memory.h; path = glesgae/gae_memory.h; sourceTree = SOURCE_ROOT; };
+		903D101F232D297B009045C0 /* gae_js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_js.h; path = glesgae/gae_js.h; sourceTree = SOURCE_ROOT; };
+		903D1020232D297B009045C0 /* gae_button.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_button.c; path = glesgae/gae_button.c; sourceTree = SOURCE_ROOT; };
+		903D1021232D297B009045C0 /* gae_system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_system.h; path = glesgae/gae_system.h; sourceTree = SOURCE_ROOT; };
+		903D1022232D297B009045C0 /* gae_point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gae_point.h; path = glesgae/gae_point.h; sourceTree = SOURCE_ROOT; };
+		903D1023232D297B009045C0 /* gae_sprite_sheet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_sprite_sheet.c; path = glesgae/gae_sprite_sheet.c; sourceTree = SOURCE_ROOT; };
+		903D1024232D297B009045C0 /* gae_stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gae_stack.c; path = glesgae/gae_stack.c; sourceTree = SOURCE_ROOT; };
+		903D1040232D298F009045C0 /* fishy_shop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_shop.c; path = src/fishy_shop.c; sourceTree = SOURCE_ROOT; };
+		903D1041232D298F009045C0 /* fishy_area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_area.h; path = src/fishy_area.h; sourceTree = SOURCE_ROOT; };
+		903D1042232D298F009045C0 /* fishy_lake.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_lake.c; path = src/fishy_lake.c; sourceTree = SOURCE_ROOT; };
+		903D1043232D298F009045C0 /* fishy_reel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_reel.c; path = src/fishy_reel.c; sourceTree = SOURCE_ROOT; };
+		903D1044232D298F009045C0 /* fishy_structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_structs.h; path = src/fishy_structs.h; sourceTree = SOURCE_ROOT; };
+		903D1045232D298F009045C0 /* fishy_timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_timer.h; path = src/fishy_timer.h; sourceTree = SOURCE_ROOT; };
+		903D1046232D298F009045C0 /* fishy_trophy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_trophy.c; path = src/fishy_trophy.c; sourceTree = SOURCE_ROOT; };
+		903D1047232D298F009045C0 /* fishy_splash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_splash.c; path = src/fishy_splash.c; sourceTree = SOURCE_ROOT; };
+		903D1048232D298F009045C0 /* fishy_cast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_cast.c; path = src/fishy_cast.c; sourceTree = SOURCE_ROOT; };
+		903D1049232D298F009045C0 /* fishy_land.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_land.c; path = src/fishy_land.c; sourceTree = SOURCE_ROOT; };
+		903D104A232D298F009045C0 /* fishy_area.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_area.c; path = src/fishy_area.c; sourceTree = SOURCE_ROOT; };
+		903D104B232D298F009045C0 /* fishy_timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fishy_timer.c; path = src/fishy_timer.c; sourceTree = SOURCE_ROOT; };
+		903D104C232D298F009045C0 /* fishy_menu_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fishy_menu_main.h; path = src/fishy_menu_main.h; sourceTree = SOURCE_ROOT; };
+		903D104D232D298F009045C0 /* guimain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = guimain.c; path = src/guimain.c; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,20 +184,20 @@
 		903D0F23232D259A009045C0 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				903D0F25232D25AD009045C0 /* fishy_area.c */,
-				903D0F2D232D25AD009045C0 /* fishy_area.h */,
-				903D0F2A232D25AD009045C0 /* fishy_cast.c */,
-				903D0F2C232D25AD009045C0 /* fishy_lake.c */,
-				903D0F29232D25AD009045C0 /* fishy_land.c */,
-				903D0F31232D25AD009045C0 /* fishy_menu_main.h */,
-				903D0F26232D25AD009045C0 /* fishy_reel.c */,
-				903D0F24232D25AD009045C0 /* fishy_shop.c */,
-				903D0F28232D25AD009045C0 /* fishy_splash.c */,
-				903D0F2B232D25AD009045C0 /* fishy_structs.h */,
-				903D0F2F232D25AD009045C0 /* fishy_timer.c */,
-				903D0F2E232D25AD009045C0 /* fishy_timer.h */,
-				903D0F27232D25AD009045C0 /* fishy_trophy.c */,
-				903D0F30232D25AD009045C0 /* guimain.c */,
+				903D104A232D298F009045C0 /* fishy_area.c */,
+				903D1041232D298F009045C0 /* fishy_area.h */,
+				903D1048232D298F009045C0 /* fishy_cast.c */,
+				903D1042232D298F009045C0 /* fishy_lake.c */,
+				903D1049232D298F009045C0 /* fishy_land.c */,
+				903D104C232D298F009045C0 /* fishy_menu_main.h */,
+				903D1043232D298F009045C0 /* fishy_reel.c */,
+				903D1040232D298F009045C0 /* fishy_shop.c */,
+				903D1047232D298F009045C0 /* fishy_splash.c */,
+				903D1044232D298F009045C0 /* fishy_structs.h */,
+				903D104B232D298F009045C0 /* fishy_timer.c */,
+				903D1045232D298F009045C0 /* fishy_timer.h */,
+				903D1046232D298F009045C0 /* fishy_trophy.c */,
+				903D104D232D298F009045C0 /* guimain.c */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -205,63 +205,63 @@
 		903D0F3C232D25BA009045C0 /* glesgae */ = {
 			isa = PBXGroup;
 			children = (
-				903D0F47232D25D2009045C0 /* gae_array.c */,
-				903D0F59232D25D4009045C0 /* gae_array.h */,
-				903D0F73232D25D5009045C0 /* gae_buffer.c */,
-				903D0F61232D25D4009045C0 /* gae_buffer.h */,
-				903D0F46232D25D2009045C0 /* gae_button.c */,
-				903D0F44232D25D2009045C0 /* gae_button.h */,
-				903D0F72232D25D5009045C0 /* gae_camera.c */,
-				903D0F6B232D25D5009045C0 /* gae_camera.h */,
-				903D0F5B232D25D4009045C0 /* gae_clock_linux.c */,
-				903D0F6D232D25D5009045C0 /* gae_clock.h */,
-				903D0F6C232D25D5009045C0 /* gae_colour.c */,
-				903D0F42232D25D2009045C0 /* gae_colour.h */,
-				903D0F4F232D25D3009045C0 /* gae_dlist.c */,
-				903D0F50232D25D3009045C0 /* gae_dlist.h */,
-				903D0F63232D25D4009045C0 /* gae_events_sdl2.c */,
-				903D0F70232D25D5009045C0 /* gae_events.h */,
-				903D0F52232D25D3009045C0 /* gae_file.c */,
-				903D0F65232D25D4009045C0 /* gae_file.h */,
-				903D0F54232D25D3009045C0 /* gae_font.c */,
-				903D0F5A232D25D4009045C0 /* gae_font.h */,
-				903D0F53232D25D3009045C0 /* gae_graphics_sdl2.c */,
-				903D0F4D232D25D3009045C0 /* gae_graphics_sdl2.h */,
-				903D0F5C232D25D4009045C0 /* gae_graphics.h */,
-				903D0F40232D25D2009045C0 /* gae_grid.c */,
-				903D0F6A232D25D5009045C0 /* gae_grid.h */,
-				903D0F6F232D25D5009045C0 /* gae_hashstring.c */,
-				903D0F6E232D25D5009045C0 /* gae_hashstring.h */,
-				903D0F5F232D25D4009045C0 /* gae_js.c */,
-				903D0F67232D25D5009045C0 /* gae_js.h */,
-				903D0F45232D25D2009045C0 /* gae_list.c */,
-				903D0F4A232D25D3009045C0 /* gae_list.h */,
-				903D0F55232D25D3009045C0 /* gae_manager.c */,
-				903D0F66232D25D4009045C0 /* gae_manager.h */,
-				903D0F74232D25D6009045C0 /* gae_map.c */,
-				903D0F60232D25D4009045C0 /* gae_map.h */,
-				903D0F64232D25D4009045C0 /* gae_memory.c */,
-				903D0F57232D25D3009045C0 /* gae_memory.h */,
-				903D0F5D232D25D4009045C0 /* gae_nineslice.c */,
-				903D0F4E232D25D3009045C0 /* gae_nineslice.h */,
-				903D0F51232D25D3009045C0 /* gae_point.c */,
-				903D0F71232D25D5009045C0 /* gae_point.h */,
-				903D0F5E232D25D4009045C0 /* gae_rect.h */,
-				903D0F68232D25D5009045C0 /* gae_sprite_sheet.c */,
-				903D0F69232D25D5009045C0 /* gae_sprite_sheet.h */,
-				903D0F3D232D25D2009045C0 /* gae_sprite.c */,
-				903D0F49232D25D3009045C0 /* gae_sprite.h */,
-				903D0F48232D25D2009045C0 /* gae_stack.c */,
-				903D0F4B232D25D3009045C0 /* gae_stack.h */,
-				903D0F62232D25D4009045C0 /* gae_state.c */,
-				903D0F43232D25D2009045C0 /* gae_state.h */,
-				903D0F41232D25D2009045C0 /* gae_system_sdl2.c */,
-				903D0F56232D25D3009045C0 /* gae_system.h */,
-				903D0F8F232D2606009045C0 /* gae_system.c */,
-				903D0F3E232D25D2009045C0 /* gae_timer.c */,
-				903D0F4C232D25D3009045C0 /* gae_timer.h */,
-				903D0F58232D25D3009045C0 /* gae_types.h */,
-				903D0F3F232D25D2009045C0 /* gae.h */,
+				903D0FF4232D2978009045C0 /* gae_array.c */,
+				903D0FF8232D2978009045C0 /* gae_array.h */,
+				903D1006232D2979009045C0 /* gae_buffer.c */,
+				903D1002232D2978009045C0 /* gae_buffer.h */,
+				903D1020232D297B009045C0 /* gae_button.c */,
+				903D1003232D2979009045C0 /* gae_button.h */,
+				903D1009232D2979009045C0 /* gae_camera.c */,
+				903D0FED232D2977009045C0 /* gae_camera.h */,
+				903D1004232D2979009045C0 /* gae_clock_linux.c */,
+				903D0FF1232D2978009045C0 /* gae_clock.h */,
+				903D101B232D297A009045C0 /* gae_colour.c */,
+				903D1018232D297A009045C0 /* gae_colour.h */,
+				903D0FF5232D2978009045C0 /* gae_dlist.c */,
+				903D1019232D297A009045C0 /* gae_dlist.h */,
+				903D101C232D297A009045C0 /* gae_events_sdl2.c */,
+				903D1001232D2978009045C0 /* gae_events.h */,
+				903D1007232D2979009045C0 /* gae_file.c */,
+				903D0FFB232D2978009045C0 /* gae_file.h */,
+				903D0FFD232D2978009045C0 /* gae_font.c */,
+				903D1015232D297A009045C0 /* gae_font.h */,
+				903D100E232D2979009045C0 /* gae_graphics_sdl2.c */,
+				903D1000232D2978009045C0 /* gae_graphics_sdl2.h */,
+				903D0FF9232D2978009045C0 /* gae_graphics.h */,
+				903D1010232D2979009045C0 /* gae_grid.c */,
+				903D1013232D297A009045C0 /* gae_grid.h */,
+				903D0FF7232D2978009045C0 /* gae_hashstring.c */,
+				903D0FFE232D2978009045C0 /* gae_hashstring.h */,
+				903D101D232D297A009045C0 /* gae_js.c */,
+				903D101F232D297B009045C0 /* gae_js.h */,
+				903D0FFF232D2978009045C0 /* gae_list.c */,
+				903D0FFA232D2978009045C0 /* gae_list.h */,
+				903D1008232D2979009045C0 /* gae_manager.c */,
+				903D1011232D297A009045C0 /* gae_manager.h */,
+				903D100B232D2979009045C0 /* gae_map.c */,
+				903D100C232D2979009045C0 /* gae_map.h */,
+				903D1005232D2979009045C0 /* gae_memory.c */,
+				903D101E232D297B009045C0 /* gae_memory.h */,
+				903D0FEF232D2978009045C0 /* gae_nineslice.c */,
+				903D1014232D297A009045C0 /* gae_nineslice.h */,
+				903D0FF3232D2978009045C0 /* gae_point.c */,
+				903D1022232D297B009045C0 /* gae_point.h */,
+				903D100A232D2979009045C0 /* gae_rect.h */,
+				903D1023232D297B009045C0 /* gae_sprite_sheet.c */,
+				903D0FF0232D2978009045C0 /* gae_sprite_sheet.h */,
+				903D0FF6232D2978009045C0 /* gae_sprite.c */,
+				903D0FEE232D2977009045C0 /* gae_sprite.h */,
+				903D1024232D297B009045C0 /* gae_stack.c */,
+				903D1016232D297A009045C0 /* gae_stack.h */,
+				903D1017232D297A009045C0 /* gae_state.c */,
+				903D0FF2232D2978009045C0 /* gae_state.h */,
+				903D100D232D2979009045C0 /* gae_system_sdl2.c */,
+				903D1012232D297A009045C0 /* gae_system.c */,
+				903D1021232D297B009045C0 /* gae_system.h */,
+				903D0FFC232D2978009045C0 /* gae_timer.c */,
+				903D101A232D297A009045C0 /* gae_timer.h */,
+				903D0FEC232D2977009045C0 /* gae_types.h */,
+				903D100F232D2979009045C0 /* gae.h */,
 			);
 			name = glesgae;
 			sourceTree = "<group>";
@@ -322,43 +322,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				903D0F38232D25AD009045C0 /* fishy_cast.c in Sources */,
-				903D0F86232D25D6009045C0 /* gae_state.c in Sources */,
-				903D0F87232D25D6009045C0 /* gae_events_sdl2.c in Sources */,
-				903D0F37232D25AD009045C0 /* fishy_land.c in Sources */,
-				903D0F33232D25AD009045C0 /* fishy_area.c in Sources */,
-				903D0F7D232D25D6009045C0 /* gae_dlist.c in Sources */,
-				903D0F34232D25AD009045C0 /* fishy_reel.c in Sources */,
-				903D0F90232D2606009045C0 /* gae_system.c in Sources */,
-				903D0F85232D25D6009045C0 /* gae_js.c in Sources */,
-				903D0F82232D25D6009045C0 /* gae_manager.c in Sources */,
-				903D0F80232D25D6009045C0 /* gae_graphics_sdl2.c in Sources */,
-				903D0F88232D25D6009045C0 /* gae_memory.c in Sources */,
-				903D0F3B232D25AD009045C0 /* guimain.c in Sources */,
-				903D0F8C232D25D6009045C0 /* gae_camera.c in Sources */,
-				903D0F84232D25D6009045C0 /* gae_nineslice.c in Sources */,
-				903D0F7A232D25D6009045C0 /* gae_button.c in Sources */,
-				903D0F76232D25D6009045C0 /* gae_timer.c in Sources */,
-				903D0F39232D25AD009045C0 /* fishy_lake.c in Sources */,
-				903D0F89232D25D6009045C0 /* gae_sprite_sheet.c in Sources */,
-				903D0F7C232D25D6009045C0 /* gae_stack.c in Sources */,
-				903D0F81232D25D6009045C0 /* gae_font.c in Sources */,
-				903D0F78232D25D6009045C0 /* gae_system_sdl2.c in Sources */,
-				903D0F36232D25AD009045C0 /* fishy_splash.c in Sources */,
-				903D0F7F232D25D6009045C0 /* gae_file.c in Sources */,
-				903D0F32232D25AD009045C0 /* fishy_shop.c in Sources */,
-				903D0F77232D25D6009045C0 /* gae_grid.c in Sources */,
-				903D0F7E232D25D6009045C0 /* gae_point.c in Sources */,
-				903D0F83232D25D6009045C0 /* gae_clock_linux.c in Sources */,
-				903D0F75232D25D6009045C0 /* gae_sprite.c in Sources */,
-				903D0F8E232D25D6009045C0 /* gae_map.c in Sources */,
-				903D0F7B232D25D6009045C0 /* gae_array.c in Sources */,
-				903D0F8D232D25D6009045C0 /* gae_buffer.c in Sources */,
-				903D0F3A232D25AD009045C0 /* fishy_timer.c in Sources */,
-				903D0F8B232D25D6009045C0 /* gae_hashstring.c in Sources */,
-				903D0F8A232D25D6009045C0 /* gae_colour.c in Sources */,
-				903D0F79232D25D6009045C0 /* gae_list.c in Sources */,
-				903D0F35232D25AD009045C0 /* fishy_trophy.c in Sources */,
+				903D1029232D297B009045C0 /* gae_sprite.c in Sources */,
+				903D1035232D297B009045C0 /* gae_system_sdl2.c in Sources */,
+				903D1057232D2990009045C0 /* guimain.c in Sources */,
+				903D1038232D297B009045C0 /* gae_system.c in Sources */,
+				903D102D232D297B009045C0 /* gae_list.c in Sources */,
+				903D1028232D297B009045C0 /* gae_dlist.c in Sources */,
+				903D104F232D2990009045C0 /* fishy_lake.c in Sources */,
+				903D1032232D297B009045C0 /* gae_manager.c in Sources */,
+				903D1050232D2990009045C0 /* fishy_reel.c in Sources */,
+				903D1026232D297B009045C0 /* gae_point.c in Sources */,
+				903D1055232D2990009045C0 /* fishy_area.c in Sources */,
+				903D103E232D297B009045C0 /* gae_sprite_sheet.c in Sources */,
+				903D1031232D297B009045C0 /* gae_file.c in Sources */,
+				903D103D232D297B009045C0 /* gae_button.c in Sources */,
+				903D1052232D2990009045C0 /* fishy_splash.c in Sources */,
+				903D1033232D297B009045C0 /* gae_camera.c in Sources */,
+				903D102E232D297B009045C0 /* gae_clock_linux.c in Sources */,
+				903D1039232D297B009045C0 /* gae_state.c in Sources */,
+				903D104E232D2990009045C0 /* fishy_shop.c in Sources */,
+				903D103C232D297B009045C0 /* gae_js.c in Sources */,
+				903D102C232D297B009045C0 /* gae_font.c in Sources */,
+				903D103B232D297B009045C0 /* gae_events_sdl2.c in Sources */,
+				903D1054232D2990009045C0 /* fishy_land.c in Sources */,
+				903D103F232D297B009045C0 /* gae_stack.c in Sources */,
+				903D102A232D297B009045C0 /* gae_hashstring.c in Sources */,
+				903D1025232D297B009045C0 /* gae_nineslice.c in Sources */,
+				903D1056232D2990009045C0 /* fishy_timer.c in Sources */,
+				903D1036232D297B009045C0 /* gae_graphics_sdl2.c in Sources */,
+				903D1037232D297B009045C0 /* gae_grid.c in Sources */,
+				903D1027232D297B009045C0 /* gae_array.c in Sources */,
+				903D102F232D297B009045C0 /* gae_memory.c in Sources */,
+				903D1051232D2990009045C0 /* fishy_trophy.c in Sources */,
+				903D1053232D2990009045C0 /* fishy_cast.c in Sources */,
+				903D1030232D297B009045C0 /* gae_buffer.c in Sources */,
+				903D102B232D297B009045C0 /* gae_timer.c in Sources */,
+				903D103A232D297B009045C0 /* gae_colour.c in Sources */,
+				903D1034232D297B009045C0 /* gae_map.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
