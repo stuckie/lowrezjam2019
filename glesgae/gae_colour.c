@@ -6,6 +6,8 @@ gae_colour_rgba gae_colour_hsv_to_rgb(gae_colour_hsv in)
 	float hh, p, q, t, ff;
 	long i;
 	gae_colour_rgba out;
+    
+    out.r = 255; out.g = 255; out.b = 255; out.a = 255;
 	
 	if (0 == in.s) {
 		out.r = in.v * 255;

@@ -112,7 +112,7 @@ water_area_t* water_area_init(water_area_t* area, unsigned int width, unsigned i
     int size = width * height;
     (void)(fish);
 
-    srand(time(0));
+    srand((unsigned int)time(0));
 
     gae_grid_init(&area->area, width, height);
     for (; i < size; ++i) {

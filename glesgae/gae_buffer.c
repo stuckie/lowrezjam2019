@@ -20,11 +20,11 @@ gae_buffer_t* gae_buffer_init(gae_buffer_t* buffer, enum gae_buffer_type type, u
 
 gae_buffer_t* gae_buffer_from_file(gae_buffer_t* buffer, gae_file_t* file)
 {
-	unsigned int oldFilePos = gae_file_position(file);
+	unsigned long oldFilePos = gae_file_position(file);
 	
 	buffer->type = GAE_BUFFER_FIXED;
 	buffer->length = gae_file_length(file);
-	buffer->data = gae_alloc(sizeof(gae_byte) * buffer->length + 1);
+	buffer->data = gae_alloc(sizeof(gae_byte) * (unsigned int)buffer->length + 1);
 	buffer->pos = 0;
 	
 	gae_file_seek(file, GAE_FILE_SEEK_START, GAE_FILE_SEEK_ABSOLUTE);
@@ -109,7 +109,7 @@ gae_buffer_t* gae_buffer_write(gae_buffer_t* buffer, unsigned int size, void* da
 #endif
 			case GAE_BUFFER_EXPANSIVE: {
 				/* Expand the buffer */
-				unsigned int newSize = buffer->length + size;
+				unsigned long newSize = buffer->length + size;
 				
 				void* newData = gae_realloc(buffer->data, newSize);
 				if (0 != newData) {

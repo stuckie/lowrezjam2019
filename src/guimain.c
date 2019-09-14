@@ -52,7 +52,7 @@ void emscripten_fullscreen()
 }
 #endif
 
-static void main_loop();
+static void main_loop(void);
 static int isRunning = 1;
 
 static void OnQuit(void* userDatum, gae_event_t* const event)
@@ -152,7 +152,7 @@ int main(int argc, char** argv)
 }
 
 /* main loop separated for Emscripten to work */
-static void main_loop()
+static void main_loop(void)
 {
 	gae_state_t* state = gae_stack_peek(&GLOBAL.stateStack);
 	if (0 == state) {

@@ -62,7 +62,7 @@ gae_file_t* gae_file_open(gae_file_t* file, const char* path)
 	return file;
 }
 
-gae_file_t* gae_file_read(gae_file_t* file, unsigned int size, void* data)
+gae_file_t* gae_file_read(gae_file_t* file, unsigned long size, void* data)
 {
 	gae_file_stdio_t* platform = file->platform;
 	/* TODO: control how many bytes are read.. speed up I/O a bit */
@@ -79,7 +79,7 @@ gae_file_t* gae_file_read(gae_file_t* file, unsigned int size, void* data)
 	return file;
 }
 
-gae_file_t* gae_file_write(gae_file_t* file, unsigned int size, void* data)
+gae_file_t* gae_file_write(gae_file_t* file, unsigned long size, void* data)
 {
 	gae_file_stdio_t* platform = file->platform;
 	/* TODO: control how many bytes are written.. speed up I/O a bit */
@@ -93,7 +93,7 @@ gae_file_t* gae_file_write(gae_file_t* file, unsigned int size, void* data)
 	return file;
 }
 
-gae_file_t* gae_file_seek(gae_file_t* file, unsigned int position, enum gae_file_seek_e seek)
+gae_file_t* gae_file_seek(gae_file_t* file, unsigned long position, enum gae_file_seek_e seek)
 {
 	gae_file_stdio_t* platform = file->platform;
 	if (position == (unsigned int)GAE_FILE_SEEK_END) {
@@ -121,13 +121,13 @@ gae_file_t* gae_file_seek(gae_file_t* file, unsigned int position, enum gae_file
 	return file;
 }
 
-unsigned int gae_file_position(gae_file_t* file)
+unsigned long gae_file_position(gae_file_t* file)
 {
 	gae_file_stdio_t* platform = file->platform;
 	return platform->pos;
 }
 
-unsigned int gae_file_length(gae_file_t* file)
+unsigned long gae_file_length(gae_file_t* file)
 {
 	gae_file_stdio_t* platform = file->platform;
 	return platform->length;

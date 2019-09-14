@@ -43,15 +43,15 @@ gae_file_t* gae_file_init(gae_file_t* file, enum gae_file_mode_e mode, enum gae_
 
 gae_file_t* gae_file_open(gae_file_t* file, const char* path);
 
-gae_file_t* gae_file_read(gae_file_t* file, unsigned int size, void* data);
+gae_file_t* gae_file_read(gae_file_t* file, unsigned long size, void* data);
 
-gae_file_t* gae_file_write(gae_file_t* file, unsigned int size, void* data);
+gae_file_t* gae_file_write(gae_file_t* file, unsigned long size, void* data);
 
-gae_file_t* gae_file_seek(gae_file_t* file, unsigned int position, enum gae_file_seek_e seek);
+gae_file_t* gae_file_seek(gae_file_t* file, unsigned long position, enum gae_file_seek_e seek);
 
-unsigned int gae_file_position(gae_file_t* file);
+unsigned long gae_file_position(gae_file_t* file);
 
-unsigned int gae_file_length(gae_file_t* file);
+unsigned long gae_file_length(gae_file_t* file);
 
 gae_file_t* gae_file_close(gae_file_t* file);
 

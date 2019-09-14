@@ -256,7 +256,7 @@ gae_json_document_t* gae_json_document_destroy(gae_json_document_t* doc)
 
 char* gae_json_string(gae_json_document_t* doc, gae_json_string_t* string)
 {
-	unsigned int size = string->end - string->start;
+	unsigned long size = string->end - string->start;
 	char* jstring = gae_alloc(sizeof(char) * size + 1);
 	memset(jstring, 0, size + 1);
 	memcpy(jstring, &(doc->buffer.data[string->start]), size);
@@ -265,7 +265,7 @@ char* gae_json_string(gae_json_document_t* doc, gae_json_string_t* string)
 
 static int string_compare(gae_json_document_t* doc, gae_json_string_t* jstring, const char* cstring)
 {
-	unsigned int size = jstring->end - jstring->start;
+	unsigned long size = jstring->end - jstring->start;
 	if (0 == size) return -1;
 	return strncmp((char*)&(doc->buffer.data[jstring->start]), cstring, size);
 }

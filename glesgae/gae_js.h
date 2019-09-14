@@ -20,8 +20,8 @@ typedef enum gae_json_string_type_e
 } gae_json_string_type;
 
 typedef struct gae_json_string_s {
-	unsigned int start;
-	unsigned int end;
+	unsigned long start;
+	unsigned long end;
 	gae_json_string_type type;
 	
 #if defined GAE_JSON_DEBUG
