@@ -95,7 +95,6 @@ int main(int argc, char** argv)
     GLOBAL.framerate.ticksPerFrame = GLOBAL.framerate.fps * 1000.0F;
 	
 	gae_system.event_system = gae_event_system_init(gae_alloc(sizeof(gae_event_system_t)), &GLOBAL);
-	gae_system.event_system->onMouseEvent = OnMouseEvent;
 	
 	gae_system.graphics.window = gae_graphics_window_init(gae_alloc(sizeof(gae_graphics_window_t)), "Low Rez Fish'n", 0x2FFF0000U, 0x2FFF0000U, 512, 512, 0);
 	gae_system.graphics.context = gae_graphics_context_init(gae_alloc(sizeof(gae_graphics_context_t)), gae_system.graphics.window, 0);

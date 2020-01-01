@@ -5,8 +5,8 @@
 /* Create a font based on the given texture, and a string of definitions matching the layout of the font. IE: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" */
 gae_font_t* gae_font_init(gae_font_t* font, unsigned int width, unsigned int height, gae_graphics_texture_t* const texture, const char* definitions)
 {
-	const unsigned long chars = strlen(definitions);
-	int i = 0;
+	const unsigned int chars = strlen(definitions);
+	unsigned int i = 0;
 	gae_map_t* lookups = &(font->lookup);
 	font->glyphWidth = width;
 	font->glyphHeight = height;
@@ -39,8 +39,8 @@ gae_font_t* gae_font_setColour(gae_font_t* font, gae_colour_rgba* const colour)
 /* Write a string based on this font directly to the screen at the given x, y coords */
 gae_font_t* gae_font_writeText(gae_font_t* font, const char* string, const unsigned int x, const unsigned int y, const unsigned int spacing)
 {
-	const unsigned long chars = strlen(string);
-	int i = 0;
+	const unsigned int chars = strlen(string);
+	unsigned int i = 0;
 	gae_rect_t dst;
 	dst.x = x; dst.y = y; 
 	dst.w = font->glyphWidth; dst.h = font->glyphHeight;
