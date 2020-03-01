@@ -1,0 +1,9 @@
+Package: lowrezfishn
+Version: 1.0-1
+Section: games
+Priority: optional
+Architecture: amd64
+Depends: libc6, libsdl2-2.0-0
+Maintainer: Steven Campbell <stuckie@arcadebadgers.co.uk>
+Description: Simple Arcade Fishing
+ Entry for the Low Rez Jam 2019.
