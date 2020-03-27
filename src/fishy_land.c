@@ -33,6 +33,7 @@ static int onStart(void* userData)
 	
 	data->itemRect.x = 24;
 	data->itemRect.y = 24;
+	data->time = 0.0F;
 	
 	value = 0;
 	

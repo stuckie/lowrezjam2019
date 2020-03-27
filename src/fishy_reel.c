@@ -221,7 +221,7 @@ item_t* item_update(item_t* item, fishy_reel_t* data)
 	gae_rect_t rect;
 	gae_colour_hsv hsv;
 	gae_colour_rgba rgb;
-	float distance = fabs(data->distance - item->distance);
+	float distance = fabs((double)data->distance - item->distance);
 	float depth = fabs((data->depth) - item->depth);
 	
 	rect.y = data->depthMeter.barRect.y + 1 + (item->depth);
@@ -440,7 +440,11 @@ static int onUpdate(void* userData)
 			gae_state_t* thisState;
 			int i = rand() % 16;
 			char c[12];
-			sprintf(c, "%d", i); 
+#if !defined(WINDOWS)
+			sprintf(c, "%d", i);
+#else
+			sprintf_s(c, 12, "%d", i);
+#endif
 			GLOBAL.itemCatch = gae_hashstring_calculate(c);
 			GLOBAL.trophies[i] = 1;
 			GLOBAL.time.timer.currentTime += 60;

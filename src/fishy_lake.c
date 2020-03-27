@@ -30,8 +30,8 @@ typedef struct lake_boat_s {
 lake_boat_t* lake_boat_init(lake_boat_t* boat)
 {
 	boat->pos.x = 0; boat->pos.y = 0;
-	boat->target.x = 0; boat->target.x = 0;
-	boat->tile.x = 0; boat->tile.x = 0;
+	boat->target.x = 0; boat->target.y = 0;
+	boat->tile.x = 0; boat->tile.y = 0;
 	
 	boat->boatIds[0] = gae_hashstring_calculate("boat");
 	boat->boatIds[1] = gae_hashstring_calculate("boat2");
@@ -50,7 +50,6 @@ lake_boat_t* lake_boat_init(lake_boat_t* boat)
 }
 
 typedef struct fishy_lake_state_s {
-	gae_graphics_texture_t waterTex;
 	gae_graphics_texture_t minimapTex;
 	gae_graphics_texture_t ui;
 	
@@ -315,7 +314,6 @@ static int onStop(void* userData)
 	
 	water_area_destroy(&data->waterArea);
 	gae_graphics_texture_destroy(&data->ui);
-	gae_graphics_texture_destroy(&data->waterTex);
 	gae_graphics_texture_destroy(&data->minimapTex);
 	
 	return 0;

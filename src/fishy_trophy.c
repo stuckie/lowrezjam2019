@@ -28,7 +28,11 @@ static int onStart(void* userData)
 	
 	for (i = 0; i < 16; ++i) {
 		char c[12];
-		sprintf(c, "%d", i); 
+#if !defined(WINDOWS)
+		sprintf(c, "%d", i);
+#else
+		sprintf_s(c, 12, "%d", i);
+#endif
 		data->ids[i] = gae_hashstring_calculate(c);
 		data->itemRect[i].x = (i * 16) % 64;
 		data->itemRect[i].y = ((i / 4)) * 16;

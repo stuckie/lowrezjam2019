@@ -82,7 +82,7 @@ static void loadSprites()
 	gae_json_document_destroy(&jsDoc);
 }
 
-int main(int argc, char** argv)
+int SDL_main(int argc, char** argv)
 {
 	gae_state_t shop;
 	gae_state_t splash;

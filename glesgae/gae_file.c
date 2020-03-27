@@ -46,9 +46,13 @@ gae_file_t* gae_file_open(gae_file_t* file, const char* path)
 		case GAE_FILE_TYPE_BINARY: options[1] = 'b'; break;
 		default: break;
 	}
-	
+
+#if !defined(WINDOWS)
 	platform->file = fopen(path, options);
-	
+#else
+	fopen_s(&platform->file, path, options);
+#endif
+
 	if (0 == platform->file) {
 		file->status = GAE_FILE_NOT_FOUND;
 		return file;

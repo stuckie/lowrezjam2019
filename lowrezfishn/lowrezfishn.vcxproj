@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{2076A314-BBC9-468E-8DC8-37D2B1E8723F}</ProjectGuid>
+    <RootNamespace>lowrezfishn</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Source\lowrezjam2019\glesgae;C:\Source\SDL2-devel-2.0.12-VC\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Source\SDL2-devel-2.0.12-VC\SDL2-2.0.12\lib\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\glesgae\gae_array.c" />
+    <ClCompile Include="..\glesgae\gae_buffer.c" />
+    <ClCompile Include="..\glesgae\gae_button.c" />
+    <ClCompile Include="..\glesgae\gae_camera.c" />
+    <ClCompile Include="..\glesgae\gae_clock_win32.c" />
+    <ClCompile Include="..\glesgae\gae_colour.c" />
+    <ClCompile Include="..\glesgae\gae_dlist.c" />
+    <ClCompile Include="..\glesgae\gae_events_sdl2.c" />
+    <ClCompile Include="..\glesgae\gae_file.c" />
+    <ClCompile Include="..\glesgae\gae_font.c" />
+    <ClCompile Include="..\glesgae\gae_graphics_sdl2.c" />
+    <ClCompile Include="..\glesgae\gae_grid.c" />
+    <ClCompile Include="..\glesgae\gae_hashstring.c" />
+    <ClCompile Include="..\glesgae\gae_js.c" />
+    <ClCompile Include="..\glesgae\gae_list.c" />
+    <ClCompile Include="..\glesgae\gae_manager.c" />
+    <ClCompile Include="..\glesgae\gae_map.c" />
+    <ClCompile Include="..\glesgae\gae_memory.c" />
+    <ClCompile Include="..\glesgae\gae_nineslice.c" />
+    <ClCompile Include="..\glesgae\gae_point.c" />
+    <ClCompile Include="..\glesgae\gae_sprite.c" />
+    <ClCompile Include="..\glesgae\gae_sprite_sheet.c" />
+    <ClCompile Include="..\glesgae\gae_stack.c" />
+    <ClCompile Include="..\glesgae\gae_state.c" />
+    <ClCompile Include="..\glesgae\gae_system.c" />
+    <ClCompile Include="..\glesgae\gae_system_sdl2.c" />
+    <ClCompile Include="..\glesgae\gae_timer.c" />
+    <ClCompile Include="..\src\fishy_area.c" />
+    <ClCompile Include="..\src\fishy_cast.c" />
+    <ClCompile Include="..\src\fishy_lake.c" />
+    <ClCompile Include="..\src\fishy_land.c" />
+    <ClCompile Include="..\src\fishy_reel.c" />
+    <ClCompile Include="..\src\fishy_shop.c" />
+    <ClCompile Include="..\src\fishy_splash.c" />
+    <ClCompile Include="..\src\fishy_timer.c" />
+    <ClCompile Include="..\src\fishy_trophy.c" />
+    <ClCompile Include="..\src\guimain.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\glesgae\gae.h" />
+    <ClInclude Include="..\glesgae\gae_array.h" />
+    <ClInclude Include="..\glesgae\gae_buffer.h" />
+    <ClInclude Include="..\glesgae\gae_button.h" />
+    <ClInclude Include="..\glesgae\gae_camera.h" />
+    <ClInclude Include="..\glesgae\gae_clock.h" />
+    <ClInclude Include="..\glesgae\gae_colour.h" />
+    <ClInclude Include="..\glesgae\gae_dlist.h" />
+    <ClInclude Include="..\glesgae\gae_events.h" />
+    <ClInclude Include="..\glesgae\gae_file.h" />
+    <ClInclude Include="..\glesgae\gae_font.h" />
+    <ClInclude Include="..\glesgae\gae_graphics.h" />
+    <ClInclude Include="..\glesgae\gae_graphics_sdl2.h" />
+    <ClInclude Include="..\glesgae\gae_grid.h" />
+    <ClInclude Include="..\glesgae\gae_hashstring.h" />
+    <ClInclude Include="..\glesgae\gae_js.h" />
+    <ClInclude Include="..\glesgae\gae_list.h" />
+    <ClInclude Include="..\glesgae\gae_manager.h" />
+    <ClInclude Include="..\glesgae\gae_map.h" />
+    <ClInclude Include="..\glesgae\gae_memory.h" />
+    <ClInclude Include="..\glesgae\gae_nineslice.h" />
+    <ClInclude Include="..\glesgae\gae_point.h" />
+    <ClInclude Include="..\glesgae\gae_rect.h" />
+    <ClInclude Include="..\glesgae\gae_sprite.h" />
+    <ClInclude Include="..\glesgae\gae_sprite_sheet.h" />
+    <ClInclude Include="..\glesgae\gae_stack.h" />
+    <ClInclude Include="..\glesgae\gae_state.h" />
+    <ClInclude Include="..\glesgae\gae_system.h" />
+    <ClInclude Include="..\glesgae\gae_timer.h" />
+    <ClInclude Include="..\glesgae\gae_types.h" />
+    <ClInclude Include="..\src\fishy_area.h" />
+    <ClInclude Include="..\src\fishy_menu_main.h" />
+    <ClInclude Include="..\src\fishy_structs.h" />
+    <ClInclude Include="..\src\fishy_timer.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

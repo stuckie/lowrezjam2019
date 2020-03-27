@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\glesgae">
+      <UniqueIdentifier>{694627bb-4c21-4ebd-b689-3143a56f3772}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{488b8f83-0fb5-4322-b5e9-6fe4856265f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\fishy_area.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_cast.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_lake.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_land.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_reel.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_shop.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_splash.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_timer.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fishy_trophy.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\guimain.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_array.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_buffer.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_button.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_camera.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_colour.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_dlist.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_events_sdl2.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_file.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_font.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_graphics_sdl2.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_grid.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_hashstring.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_js.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_list.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_manager.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_map.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_memory.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_nineslice.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_point.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_sprite.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_sprite_sheet.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_stack.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_state.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_system.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_system_sdl2.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_timer.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+    <ClCompile Include="..\glesgae\gae_clock_win32.c">
+      <Filter>Source Files\glesgae</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\fishy_area.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\fishy_menu_main.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\fishy_structs.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\fishy_timer.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_array.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_buffer.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_button.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_camera.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_clock.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_colour.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_dlist.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_events.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_file.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_font.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_graphics.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_graphics_sdl2.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_grid.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_hashstring.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_js.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_list.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_manager.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_map.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_memory.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_nineslice.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_point.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_rect.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_sprite.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_sprite_sheet.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_stack.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_state.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_system.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_timer.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glesgae\gae_types.h">
+      <Filter>Source Files\glesgae</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
