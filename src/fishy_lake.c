@@ -268,8 +268,8 @@ static int onUpdate(void* userData)
 	
 	if (1 == data->quit) return 1;
 
-	pointer.x = GLOBAL.pointer.x;
-	pointer.y = GLOBAL.pointer.y;
+	pointer.x = GLOBAL.pointer.pos.x;
+	pointer.y = GLOBAL.pointer.pos.y;
 	
 	pointerRect.x = floor(pointer.x / 8) * 8;
 	pointerRect.y = floor(pointer.y / 8) * 8;

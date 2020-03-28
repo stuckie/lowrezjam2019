@@ -23,15 +23,15 @@ static void OnMouseEvent(void* userDatum, gae_event_t* event)
 	switch (event->type) {
 		case GAE_EVENT_MOUSE_MOVE: {
 			gae_pointer_move_event_t* motion = event->event;
-			data->pointer.x = motion->x / 8;
-			data->pointer.y = motion->y / 8;
+			data->pointer.pos.x = motion->x / 8;
+			data->pointer.pos.y = motion->y / 8;
 		};
 		break;
 		case GAE_EVENT_MOUSE_BUTTON: {
 			gae_pointer_button_event_t* button = event->event;
 			data->pointer.isDown[button->buttonId] = button->isDown;
-			data->pointer.x = button->x / 8;
-			data->pointer.y = button->y / 8;
+			data->pointer.pos.x = button->x / 8;
+			data->pointer.pos.y = button->y / 8;
 		};
 		break;
 		default:
