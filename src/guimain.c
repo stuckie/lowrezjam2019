@@ -29,7 +29,15 @@ static void OnMouseEvent(void* userDatum, gae_event_t* event)
 		break;
 		case GAE_EVENT_MOUSE_BUTTON: {
 			gae_pointer_button_event_t* button = event->event;
+			int i;
 			data->pointer.isDown[button->buttonId] = button->isDown;
+			data->pointer.isDown[GAE_MOUSE_BUTTON_ANY] = 0;
+			for (i = GAE_MOUSE_BUTTON_LEFT; i < GAE_MOUSE_BUTTON_COUNT; ++i) {
+				if (1 == data->pointer.isDown[i]) {
+					data->pointer.isDown[GAE_MOUSE_BUTTON_ANY] = 1;
+					break;
+				}
+			}
 			data->pointer.pos.x = button->x / 8;
 			data->pointer.pos.y = button->y / 8;
 		};
@@ -82,7 +90,11 @@ static void loadSprites()
 	gae_json_document_destroy(&jsDoc);
 }
 
+#if defined(WINDOWS)
 int SDL_main(int argc, char** argv)
+#else
+int main(int argc, char** argv)
+#endif
 {
 	gae_state_t shop;
 	gae_state_t splash;

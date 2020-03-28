@@ -22,7 +22,7 @@ static int onStart(void* userData)
 	fishy_trophy_t* data = userData;
 	int i;
 	
-	data->buttonDown = GLOBAL.pointer.isDown[0];
+	data->buttonDown = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	data->time = 0;
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/star.bmp", &data->star);
 	
@@ -51,7 +51,7 @@ static int onStart(void* userData)
 static int onUpdate(void* userData)
 {
 	fishy_trophy_t* data = userData;
-	int next = (0 == data->buttonDown && GLOBAL.pointer.isDown[0]);
+	int next = (0 == data->buttonDown && GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]);
 	gae_colour_rgba colour;
 	int i;
 	
@@ -97,7 +97,7 @@ static int onUpdate(void* userData)
 		gae_sprite_sheet_draw(&GLOBAL.items, id, &rect);
 	}
 	
-	data->buttonDown = GLOBAL.pointer.isDown[0];
+	data->buttonDown = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	
 	return next;
 }

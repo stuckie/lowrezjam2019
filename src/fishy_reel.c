@@ -84,7 +84,7 @@ bobber_t* bobber_init(bobber_t* bobber)
 	bobber->waterTimer.scale = -2;
 	bobber->waterTimer.currentTime = 1.0F;
 
-	bobber->down = GLOBAL.pointer.isDown[0];
+	bobber->down = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	
 	return bobber;
 }
@@ -326,12 +326,12 @@ bobber_t* bobber_update(bobber_t* bobber, fishy_reel_t* data)
 			gae_timer_update(&bobber->animTimer, gae_system.main_clock);
 			gae_timer_update(&bobber->waterTimer, gae_system.main_clock);
 			
-			if (0 == data->bobber.down && GLOBAL.pointer.isDown[0]) {
+			if (0 == data->bobber.down && GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]) {
 				if (25 > hooked)
 					data->item.state = ITEM_FIGHTING;
 			}
 			
-			data->bobber.down = GLOBAL.pointer.isDown[0];
+			data->bobber.down = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 
 			if (0 >= bobber->waterTimer.currentTime) {
 				bobber->waterTimer.currentTime = 1.0F;
@@ -408,7 +408,7 @@ static int onUpdate(void* userData)
 		return 0;
 	}
 	
-	if (GLOBAL.pointer.isDown[0]) {
+	if (GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]) {
 		data->tension += data->timer.deltaTime * (20 + (data->item.state == ITEM_FIGHTING ? data->item.strength : 0));
 		data->angle += data->timer.deltaTime * 180;
 		data->distance -= data->timer.deltaTime * 10;

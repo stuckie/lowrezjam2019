@@ -32,7 +32,7 @@ static void initGame()
 static int onUpdate(void* userData)
 {
 	fishy_shop_t* data = userData;
-	int next = GLOBAL.pointer.isDown[0];
+	int next = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->pic, 0, 0);
 	

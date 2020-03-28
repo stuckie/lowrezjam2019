@@ -52,6 +52,8 @@ lake_boat_t* lake_boat_init(lake_boat_t* boat)
 typedef struct fishy_lake_state_s {
 	gae_graphics_texture_t minimapTex;
 	gae_graphics_texture_t ui;
+	gae_graphics_texture_t castButton;
+	gae_graphics_texture_t shopButton;
 	
 	gae_rect_t uiRect;
 	gae_rect_t drawRect;
@@ -195,21 +197,53 @@ static void onShopButton(void* userData)
 	(void)(userData);
 }
 
-static void makeButton(gae_button_t* button, const char* jsonDef, int x, int y, gae_button_callback_t onReleased, void* userData)
+static gae_frame_t SetFrame(gae_graphics_texture_t* _texture, int _x, int _y, int _w, int _h)
 {
-	gae_point_2d_t pos;
-	pos.x = x;
-	pos.y = y;
+	gae_frame_t frame;
 	
-	gae_button_init(button, jsonDef, &pos, userData);
+	gae_rect_t rect;
+	rect.x = _x;
+	rect.y = _y;
+	rect.w = _w;
+	rect.h = _h;
+	
+	frame.texture = _texture;
+	frame.src = rect;
+
+	return frame;
+}
+
+static void SetupButton(gae_button_t* _button, int _x, int _y, int _w, int _h, gae_graphics_texture_t* const _texture)
+{
+	gae_rect_t dims;
+	gae_button_renderable_t graphics[gae_button_state_count];
+	gae_frame_t frame;
+	
+	dims.x = _x;
+	dims.y = _y;
+	dims.w = _w;
+	dims.h = _h;
+	
+	frame = SetFrame(_texture, 0, 0, 13, 13); gae_button_create_sprite(_button, &graphics[gae_button_inactive], &frame);
+	frame = SetFrame(_texture, 0, 13, 13, 13); gae_button_create_sprite(_button, &graphics[gae_button_active], &frame);
+	frame = SetFrame(_texture, 0, 26, 13, 13); gae_button_create_sprite(_button, &graphics[gae_button_hover], &frame);
+	frame = SetFrame(_texture, 0, 39, 13, 13); gae_button_create_sprite(_button, &graphics[gae_button_pressed], &frame);
+	
+	gae_button_init(_button, graphics, &dims, 0);
+}
+
+static void makeButton(gae_button_t* button, int x, int y, gae_button_callback_t onReleased, void* userData, gae_graphics_texture_t* const _texture)
+{
+	SetupButton(button, x, y, 13, 13, _texture);
 	button->onReleased = onReleased;
+	button->userData = userData;
 }
 
 static int onStart(void* userData)
 {
 	fishy_lake_state_t* data = userData;
 	
-	data->buttonDown = GLOBAL.pointer.isDown[0];
+	data->buttonDown = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	
 	if (data->init) {
 		fillWaterTexture(&data->waterArea, &data->minimapTex, 0);
@@ -221,6 +255,8 @@ static int onStart(void* userData)
 	fillWaterTexture(&data->waterArea, &data->minimapTex, 0);
 	
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/lake_ui.bmp", &data->ui);
+	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/cast-button.bmp", &data->castButton);
+	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/shop-button.bmp", &data->shopButton);
 	
 	setupCameras(data);
 	
@@ -231,8 +267,8 @@ static int onStart(void* userData)
 	
 	lake_boat_init(&data->boat);
 	
-	makeButton(&data->cast, "data/cast-button.json", 34, 50, onCastButton, data);
-	makeButton(&data->shop, "data/shop-button.json", 1, 50, onShopButton, data);
+	makeButton(&data->cast, 34, 50, onCastButton, data, &data->castButton);
+	makeButton(&data->shop, 1, 50, onShopButton, data, &data->shopButton);
 	
 	data->quit = 0;
 	data->init = 1;
@@ -264,7 +300,7 @@ static int onUpdate(void* userData)
 	gae_colour_rgba colour;
 	gae_rect_t pointerRect;
 	gae_rect_t fillRect;
-	int buttonDown = (0 == data->buttonDown && GLOBAL.pointer.isDown[0]);
+	int buttonDown = (0 == data->buttonDown && GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]);
 	
 	if (1 == data->quit) return 1;
 
@@ -285,8 +321,8 @@ static int onUpdate(void* userData)
 	lake_boat_update(&data->boat, data);
 	gae_sprite_sheet_draw(&GLOBAL.sprites, gae_hashstring_calculate("marker"), &pointerRect);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->ui, 0, &data->uiRect);
-	gae_button_update(&data->shop, &pointer, GLOBAL.pointer.isDown[0]);
-	gae_button_update(&data->cast, &pointer, GLOBAL.pointer.isDown[0]);
+	gae_button_update(&data->shop, &pointer, GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]);
+	gae_button_update(&data->cast, &pointer, GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]);
 	gae_colour_rgba_set_blue(colour);
 	gae_graphics_context_texture_colour(gae_system.graphics.context, &data->minimapTex, &colour);
 	gae_graphics_context_blit_texture(gae_system.graphics.context, &data->minimapTex, &data->minimap.view, &data->minimap.port);
@@ -300,7 +336,7 @@ static int onUpdate(void* userData)
 		}
 	}
 	
-	data->buttonDown = GLOBAL.pointer.isDown[0];
+	data->buttonDown = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	
 	fishy_timer_update(&GLOBAL.time);
 	fishy_timer_draw(&GLOBAL.time, time);
@@ -315,6 +351,8 @@ static int onStop(void* userData)
 	water_area_destroy(&data->waterArea);
 	gae_graphics_texture_destroy(&data->ui);
 	gae_graphics_texture_destroy(&data->minimapTex);
+	gae_graphics_texture_destroy(&data->shopButton);
+	gae_graphics_texture_destroy(&data->castButton);
 	
 	return 0;
 }

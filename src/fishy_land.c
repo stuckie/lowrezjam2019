@@ -22,7 +22,7 @@ static int onStart(void* userData)
 	gae_colour_rgba_set_white(colour);
 	gae_graphics_context_texture_colour(gae_system.graphics.context, &GLOBAL.items.texture, &colour);
 	
-	data->buttonDown = GLOBAL.pointer.isDown[0];
+	data->buttonDown = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 	gae_graphics_context_texture_load_from_file(gae_system.graphics.context, "data/star.bmp", &data->star);
 	data->params.texture = &data->star;
 	data->params.srcRect = 0;
@@ -43,7 +43,7 @@ static int onStart(void* userData)
 static int onUpdate(void* userData)
 {
 	fishy_land_t* data = userData;
-	int next = (0 == data->buttonDown && GLOBAL.pointer.isDown[0]);
+	int next = (0 == data->buttonDown && GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY]);
 	gae_colour_rgba colour;
 	gae_point_2d_t origin;
 	gae_rect_t draw = data->itemRect;
@@ -81,7 +81,7 @@ static int onUpdate(void* userData)
 	draw.y += sin(data->time) * 4;
 	gae_sprite_sheet_draw(&GLOBAL.items, GLOBAL.itemCatch, &draw);
 	
-	data->buttonDown = GLOBAL.pointer.isDown[0];
+	data->buttonDown = GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY];
 
 	return next;
 }

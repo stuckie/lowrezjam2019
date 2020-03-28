@@ -61,7 +61,7 @@ static int onUpdate(void* userData)
 	time.x = 0;
 	time.y = 0;
 	
-	if ((GLOBAL.pointer.isDown[0])
+	if ((GLOBAL.pointer.isDown[GAE_MOUSE_BUTTON_ANY])
 	&& (swing_end != data->state)) {
 		data->angle += data->timer.deltaTime;
 		if (data->angle > 360)
